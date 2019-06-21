@@ -83,7 +83,7 @@
                 <div class="title m-b-md">
                     AfrizaL
                 </div>
-
+                <span>Ini adalah mirror project Praktek Kerja Lapangan(PKL) dari GitHub saya<br>Jadi jika error di web ini maafkan ini adalah project Local :v</span><br><br>
                 <div class="links">
                     <a href="https://laravel.com/docs">Instagram</a>
                     <a href="https://laracasts.com">Facebook</a>
