@@ -81,16 +81,14 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    AfrizaL
                 </div>
-
+                <span>Ini adalah mirror project Praktek Kerja Lapangan(PKL) dari GitHub saya<br>Jadi jika error di web ini maafkan ini adalah project Local :v</span><br><br>
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
+                    <a href="https://laravel.com/docs">Instagram</a>
+                    <a href="https://laracasts.com">Facebook</a>
+                    <a href="https://laravel-news.com">Whatsapp</a>
+                    <a href="https://blog.laravel.com">Twitter</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
             </div>
