@@ -25,4 +25,10 @@ class AdminController extends Controller
     {
         return view('admin.app');
     }
+
+    public function mahasiswa()
+    {
+        # code...
+        return view('admin.mhs');
+    }
 }

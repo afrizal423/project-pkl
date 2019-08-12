@@ -34,7 +34,7 @@ class AdminSeeder extends Seeder
         $si->save();
 
         $tf = new \App\User;
-        $tf->username = "adminstf";
+        $tf->username = "admintf";
         $tf->roles = json_encode(["ADMINTF"]);
         $tf->name = "Administrator Teknik Informatika";
         $tf->email = "afrizal2499@gmail.com";
