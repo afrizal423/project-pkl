@@ -32,11 +32,12 @@
             <div class="col s12">
                     @if(session('status'))
                     <div class="alert alert-success">
-                      {{session('status')}}
+                      {{session('status')}} <br><a href="{{url('admin/mahasiswa')}}" class="waves-effect waves-light blue btn">
+                        Kembali</a>
                     </div>
                   @endif
-                <form action="{{ url('admin/mahasiswa/') }}" method="POST">
-                    {{ method_field('POST') }}
+                <form action="{{ route('mahasiswa.update', $mhs->id) }}" method="POST">
+                    {{ method_field('PATCH') }}
                     {{ csrf_field() }}
 
                     <table style="margin:20px auto;">
@@ -44,7 +45,7 @@
                             <td>NPM Mahasiswa</td>
                             <td>
                                 <div class="input-field">
-                                    <input id="npm" name="npm" type="text" class="validate">
+                                    <input id="npm" name="npm" type="text" class="validate" value="{{$mhs->npm}}">
                                     <label for="npm">NPM Mahasiswa</label>
                                     @if($errors->has('npm'))
                                     <div class="text-danger">
@@ -58,7 +59,7 @@
                             <td>Nama Mahasiswa</td>
                             <td>
                                 <div class="input-field">
-                                    <input id="nama" name="nama" type="text" class="validate">
+                                    <input id="nama" name="nama" type="text" class="validate" value="{{$mhs->nama}}">
                                     <label for="nama">Nama Mahasiswa</label>
                                     @if($errors->has('nama'))
                                 <div class="text-danger">
@@ -72,7 +73,7 @@
                             <td>Jurusan</td>
                             <td>
                                 <div class="input-field">
-                                    <input id="jurusan" name="jurusan" type="text" class="validate">
+                                    <input id="jurusan" name="jurusan" type="text" class="validate" value="{{$mhs->jurusan}}">
                                     <label for="jurusan">Jurusan</label>
                                     @if($errors->has('jurusan'))
                                 <div class="text-danger">
@@ -86,7 +87,7 @@
                             <td>Angkatan</td>
                             <td>
                                 <div class="input-field">
-                                    <input id="angkatan" name="angkatan" type="text" class="validate">
+                                    <input id="angkatan" name="angkatan" type="text" class="validate" value="{{$mhs->angkatan}}">
                                     <label for="angkatan">Angkatan</label>
                                     @if($errors->has('angkatan'))
                                 <div class="text-danger">
@@ -100,7 +101,7 @@
                             <td>Asal Kota</td>
                             <td>
                                 <div class="input-field">
-                                    <input id="asal" name="asal" type="text" class="validate">
+                                    <input id="asal" name="asal" type="text" class="validate" value="{{$mhs->asal}}">
                                     <label for="asal">Asal Kota</label>
                                     @if($errors->has('asal'))
                                 <div class="text-danger">
@@ -115,7 +116,7 @@
                             <td>Jenis Kelamin</td>
                             <td>
                                 <div class="input-field">
-                                    <select name="jenis_kelamin">
+                                    <select name="jenis_kelamin" value="{{$mhs->jenis_kelamin}}">
                                         <option value="" disabled="disabled" selected="selected">Jenis Kelamin</option>
                                         <option value="Laki-laki">Laki-laki</option>
                                         <option value="Perempuan">Perempuan</option>
@@ -132,7 +133,7 @@
                         <tr>
                             <td>Tanggal lahir</td>
                             <td>
-                                <input type="date" name="tgl_lahir">
+                                <input type="date" name="tgl_lahir" value="{{$mhs->tgl_lahir}}">
                                 @if($errors->has('tgl_lahir'))
                                 <div class="text-danger">
                                     {{ $errors->first('tgl_lahir')}}

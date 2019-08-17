@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Mahasiswa;
+use Illuminate\Support\Facades\DB;
 
 class MahasiswaController extends Controller
 {
@@ -23,7 +25,9 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        return view('admin.mahasiswa.index');
+        //$mhs = Mahasiswa::all();
+        $mhs = DB::table('tbl_mahasiswa')->orderBy('npm', 'asc')->paginate(10);
+        return view('admin.mahasiswa.index', ['mhs' => $mhs]);
     }
 
     public function create()
@@ -43,6 +47,31 @@ class MahasiswaController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request,[
+    		'npm' => 'required',
+            'nama' => 'required',
+            'jurusan' => 'required',
+            'angkatan' => 'required',
+            'asal' => 'required',
+            'jenis_kelamin' => 'required',
+            'tgl_lahir' => 'required'
+        ]);
+	    $mhs = new \App\Mahasiswa();
+        $mhs->npm = $request->get('npm');
+        $mhs->nama = $request->get('nama');
+        $mhs->jurusan = $request->get('jurusan');
+        $mhs->angkatan = $request->get('angkatan');
+        $mhs->asal = $request->get('asal');
+        $mhs->jenis_kelamin = $request->get('jenis_kelamin');
+        $mhs->tgl_lahir = $request->get('tgl_lahir');
+
+        $mhs->save();
+
+        if($request->get('action') == 'PUBLISH'){
+            return redirect()
+                  ->route('mahasiswa.create')
+                  ->with('status', 'Mahasiswa Sukses ditambahkan dalam database <button onclick="window.history.back()">Go Back</button>');
+          }
     }
 
     /**
@@ -65,6 +94,9 @@ class MahasiswaController extends Controller
     public function edit($id)
     {
         //
+        $mhs = Mahasiswa::findOrFail($id);
+
+        return view('admin.mahasiswa.editmhs', compact('mhs'));
     }
 
     /**
@@ -77,6 +109,31 @@ class MahasiswaController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $mhs = \App\Mahasiswa::findOrFail($id);
+        $this->validate($request,[
+    		'npm' => 'required',
+            'nama' => 'required',
+            'jurusan' => 'required',
+            'angkatan' => 'required',
+            'asal' => 'required',
+            'jenis_kelamin' => 'required',
+            'tgl_lahir' => 'required'
+        ]);
+        $mhs->npm = $request->get('npm');
+        $mhs->nama = $request->get('nama');
+        $mhs->jurusan = $request->get('jurusan');
+        $mhs->angkatan = $request->get('angkatan');
+        $mhs->asal = $request->get('asal');
+        $mhs->jenis_kelamin = $request->get('jenis_kelamin');
+        $mhs->tgl_lahir = $request->get('tgl_lahir');
+
+        $mhs->save();
+
+        if($request->get('action') == 'PUBLISH'){
+            return redirect()
+                  ->route('mahasiswa.edit', ['id'=>$mhs->id])
+                  ->with('status', 'Mahasiswa Sukses diupdate dalam database');
+          }
     }
 
     /**
@@ -88,5 +145,9 @@ class MahasiswaController extends Controller
     public function destroy($id)
     {
         //
+        $mhs = Mahasiswa::findOrFail($id);
+        $mhs->delete();
+
+        return redirect('/admin/mahasiswa')->with('success', 'Mahasiswa is successfully deleted');
     }
 }

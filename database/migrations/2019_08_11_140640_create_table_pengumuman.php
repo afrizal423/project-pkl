@@ -14,11 +14,11 @@ class CreateTablePengumuman extends Migration
     public function up()
     {
         Schema::create('tbl_pengumuman', function (Blueprint $table) {
-            $table->bigIncrements('id_pengumuman');
+            $table->bigIncrements('id');
             $table->string('username', 50);
             $table->string('judul');
             $table->string('slug');
-            $table->string('gambar');
+            $table->string('gambar')->nullable();;
             $table->text('konten');
             $table->string('kategori',50);
             $table->enum('status', ['draft', 'publish']);
