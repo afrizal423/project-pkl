@@ -52,10 +52,10 @@
                 <b>Author</b>: {{$inf->name}} <br>
                 <b>Created at</b>: {{ \Carbon\Carbon::parse($inf->created_at)->format('j F, Y h:i:s A')}} <br>
                 <b>Update at</b>: {{ \Carbon\Carbon::parse($inf->updated_at)->format('j F, Y h:i:s A')}} <br>
-                <a href="{{ route('pengumuman.edit',$inf->id)}}" class="blue waves-effect waves-light  btn">
+                <a href="{{ route('event.edit',$inf->id)}}" class="blue waves-effect waves-light  btn">
                         <i class="material-icons left">settings_backup_restore</i>
                         Edit</a>
-                        <form action="{{ route('pengumuman.destroy', $inf->id)}}"  onsubmit="return confirm('Hapus pengumuman {{ $inf->judul }} ?')" method="post">
+                        <form action="{{ route('event.destroy', $inf->id)}}"  onsubmit="return confirm('Hapus pengumuman {{ $inf->judul }} ?')" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button class="red btn waves-effect waves-light" type="submit" name="action" value="PUBLISH">Delete
