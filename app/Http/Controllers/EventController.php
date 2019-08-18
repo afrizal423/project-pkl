@@ -129,6 +129,9 @@ class EventController extends Controller
     public function edit($id)
     {
         //
+        $inf =  DB::table('tbl_event')->where('tbl_event.id', $id)->first();
+        //echo $inf;
+        return view('admin.event.edit', ['ev' => $inf]);
     }
 
     /**
