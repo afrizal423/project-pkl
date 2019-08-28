@@ -26,7 +26,9 @@ class EventController extends Controller
     public function manage()
     {
         //
-        return view('admin.event.index');
+        $info = DB::table('tbl_event')->join('users', 'tbl_event.username', '=', 'users.username')->where('tbl_event.username', \Auth::user()->username)->select('tbl_event.*', 'users.name')->paginate(10);
+        return view('admin.event.manage', ['info' => $info]);
+        //echo $info;
     }
     /**
      * Show the form for creating a new resource.
@@ -144,6 +146,55 @@ class EventController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        $this->validate($request,[
+    		'judul' => 'required',
+            'konten' => 'required',
+            'kategori' => 'required',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+        $info = \App\Pengumuman::findOrFail($id);
+        $info->username = \Auth::user()->username;
+        $info->judul = $request->get('judul');
+        $info->slug = str_slug($request->get('judul'));
+        $gambar = $request->file('gambar');
+        if($gambar){
+            $cover_path = $gambar->store('info-covers', 'public');
+
+            $info->gambar = $cover_path;
+          }
+        $info->konten = $request->get('konten');
+        $info->kategori = $request->get('kategori');
+        $info->status = $request->get('action');
+
+
+        /*
+         if ($request->hasFile('gambar')) {
+            $gambar = $request->file('gambar');
+            $filename = time() . '.' . $gambar->getClientOriginalExtension();
+            $location = public_path('images/' . $filename);
+            Image::make($gambar)->resize(800, 400)->save($location);
+            $info->gambar = $filename;
+          }
+          $gambar = $request->file('gambar');
+        if($gambar){
+            $cover_path = $gambar->store('info-covers', 'public');
+
+            $info->gambar = $cover_path;
+          }
+        */
+
+          $info->save();
+
+          if($request->get('action') == 'PUBLISH'){
+            return redirect()
+                  ->route('event.edit',['inf' => $info->id])
+                  ->with('status', 'event successfully saved and published');
+          } else {
+            return redirect()
+                  ->route('event.edit',['inf' => $info->id])
+                  ->with('status', 'event saved as draft');
+          }
     }
 
     /**

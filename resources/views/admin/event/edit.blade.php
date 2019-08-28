@@ -33,7 +33,8 @@
             <div class="col s12">
                 @if(session('status'))
                 <div class="alert alert-success">
-                    {{session('status')}}
+
+                    <script>Materialize.toast({{session('status')}}, 4000)</script>
                     <br>
                     <a href="{{url('admin/pengumuman')}}" class="waves-effect waves-light blue btn">
                         Kembali</a>

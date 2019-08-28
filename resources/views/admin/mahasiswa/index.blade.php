@@ -47,7 +47,7 @@
                             <a href="{{url('admin/mahasiswa/create')}}" class="waves-effect waves-light  btn">
                                 <i class="material-icons left">add</i>
                                 Add Data</a>
-                            <button data-target="modal1" class="btn modal-trigger">Tambah Record</button>
+                            <!--<button data-target="modal1" class="btn modal-trigger">Tambah Record</button>-->
                         </div>
                     </div>
                 </div>

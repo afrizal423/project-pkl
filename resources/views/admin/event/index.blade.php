@@ -44,7 +44,7 @@
                             <a href="{{route('event.create')}}" class="waves-effect waves-light  btn">
                                 <i class="material-icons left">add</i>
                                 Add Event</a>
-                                <a href="{{url('event/manage')}}" class="waves-effect waves-light  btn">
+                                <a href="{{url('admin/event/manage')}}" class="waves-effect waves-light  btn">
                                         <i class="material-icons left">add</i>
                                         Manage Event</a>
                         </div>
