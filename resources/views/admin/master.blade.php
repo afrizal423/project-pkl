@@ -366,7 +366,7 @@
                                     </a>
                                 </li>
                                 <li class="bold">
-                                    <a href="admin.html" class="waves-effect waves-cyan">
+                                    <a href="{{url('admin/prestasi')}}" class="waves-effect waves-cyan">
                                         <i class="material-icons">person</i>
                                         <span class="nav-text">Prestasi</span>
                                     </a>

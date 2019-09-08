@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\persma;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class PersmaController extends Controller
 {
@@ -12,9 +14,14 @@ class PersmaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
-        //
+        $mhs = DB::table('tbl_prestasi')->orderBy('id', 'asc')->paginate(10);
+        return view('admin.prestasi.index', ['mhs' => $mhs]);
     }
 
     /**
@@ -25,6 +32,8 @@ class PersmaController extends Controller
     public function create()
     {
         //
+        $mhs = DB::table('tbl_prestasi')->orderBy('id', 'asc')->paginate(10);
+        return view('admin.prestasi.index', ['mhs' => $mhs]);
     }
 
     /**

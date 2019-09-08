@@ -9,7 +9,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s10 m6 l6">
-                    <h5 class="breadcrumbs-title">Tambah Data Mahasiswa</h5>
+                    <h5 class="breadcrumbs-title">Edit Data Event</h5>
                     <ol class="breadcrumbs">
                         <li>
                             <a href="{{url('admin')}}">Dashboard</a>
