@@ -113,5 +113,9 @@ class PrestasiController extends Controller
     public function destroy($id)
     {
         //
+        $mhs = Persma::findOrFail($id);
+        $mhs->delete();
+
+        return redirect('/admin/prestasi')->with('success', 'Prestasi is successfully deleted');
     }
 }
