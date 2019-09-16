@@ -14,7 +14,7 @@
             content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
         <title>@yield('judul_halaman')</title>
         <!-- Favicons-->
-        <link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" href="https://www.upnjatim.ac.id/wp-content/uploads/2018/05/logoupnbaru.png" sizes="32x32">
         <!-- Favicons-->
         <link
             rel="apple-touch-icon-precomposed"

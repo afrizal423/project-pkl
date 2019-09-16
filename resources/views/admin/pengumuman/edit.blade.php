@@ -101,24 +101,29 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Foto Banner</td>
-                            <td>
-                                <div class="file-field input-field">
-                                    <div class="btn">
-                                        <span>File</span>
-                                        <input type="file" name="gambar">
+                                <td>Foto Banner</td>
+                                <td>
+                                        <small class="text-muted">Current cover</small><br>
+                                        @if($inf->gambar)
+                                          <img src="{{asset('storage/' . $inf->gambar)}}" width="96px"/>
+                                        @endif
+                                    <div class="file-field input-field">
+                                        <div class="btn">
+                                            <span>File</span>
+                                            <input type="file" name="gambar">
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                            <input class="file-path validate" name="gambar" type="text">
+                                        </div>
+                                        @if($errors->has('gambar'))
+                                        <div class="text-danger">
+                                            {{ $errors->first('gambar')}}
+                                        </div>
+                                        @endif
                                     </div>
-                                    <div class="file-path-wrapper">
-                                        <input class="file-path validate" name="gambar" type="text">
-                                    </div>
-                                    @if($errors->has('gambar'))
-                                    <div class="text-danger">
-                                        {{ $errors->first('gambar')}}
-                                    </div>
-                                    @endif
-                                </div>
-                            </td>
-                        </tr>
+                                    <small class="text-muted">Kosongkan jika tidak ingin mengubah cover</small>
+                                </td>
+                            </tr>
 
                         <tr>
                             <td></td>

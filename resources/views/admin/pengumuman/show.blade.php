@@ -55,13 +55,19 @@
                 <a href="{{ route('pengumuman.edit',$inf->id)}}" class="blue waves-effect waves-light  btn">
                         <i class="material-icons left">settings_backup_restore</i>
                         Edit</a>
-                        <form action="{{ route('event.destroy', $inf->id)}}"  onsubmit="return confirm('Hapus pengumuman {{ $inf->judul }} ?')" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button class="red btn waves-effect waves-light" type="submit" name="action" value="PUBLISH">Delete
-                                        <i class="material-icons right">delete</i>
-                                    </button>
-                              </form>
+                        <form
+                        action="{{ route('pengumuman.destroy', $inf->id)}}"
+                        onsubmit="return confirm('Hapus data {{ $inf->judul }} ?')"
+                        method="post">
+                        @csrf @method('DELETE')
+                        <button
+                            class="red btn waves-effect waves-light"
+                            type="submit"
+                            name="action"
+                            value="PUBLISH">Delete
+                            <i class="material-icons right">delete</i>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>

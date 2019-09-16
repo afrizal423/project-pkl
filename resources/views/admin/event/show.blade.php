@@ -1,4 +1,4 @@
-@extends('admin.master') @section('judul_halaman', 'Pengumuman')
+@extends('admin.master') @section('judul_halaman', 'Event')
 @section('konten')
 <!-- START CONTENT -->
 <section id="content">
@@ -21,7 +21,7 @@
                             <a href="{{url('admin')}}">Dashboard</a>
                         </li>
                         <li>
-                            <a href="{{url('admin/pengumuman')}}">Pengumuman</a>
+                            <a href="{{url('admin/event')}}">Event</a>
                         </li>
                         <li class="active">Lihat</li>
                         <li class="active">{{$inf->judul}}</li>

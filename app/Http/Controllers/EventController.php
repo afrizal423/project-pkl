@@ -62,7 +62,7 @@ class EventController extends Controller
         $info->slug = str_slug($request->get('judul'));
         $gambar = $request->file('gambar');
         if($gambar){
-            $cover_path = $gambar->store('info-covers', 'public');
+            $cover_path = $gambar->store('event-covers', 'public');
 
             $info->gambar = $cover_path;
           }
@@ -115,7 +115,7 @@ class EventController extends Controller
             abort(403, 'Anda tidak memiliki cukup hak akses kepemilikan');
         } elseif ($info->username == \Auth::user()->username) {
             $info = DB::table('tbl_event')->join('users', 'tbl_event.username', '=', 'users.username')->where('slug', $id)->where('tbl_event.username', \Auth::user()->username)->select('tbl_event.*', 'users.name')->first();
-            return view('admin.pengumuman.show', ['inf' => $info]);
+            return view('admin.event.show', ['inf' => $info]);
         } else {
             abort(404, 'eror');
         }
@@ -131,9 +131,31 @@ class EventController extends Controller
     public function edit($id)
     {
         //
-        $inf =  DB::table('tbl_event')->where('tbl_event.id', $id)->first();
+        //$inf =  DB::table('tbl_event')->where('tbl_event.id', $id)->first();
+        $info = DB::table('tbl_event')->where('id', $id)->first();
+
+        if ($info!=NULL) {
+            if ($info->username != \Auth::user()->username) {
+                abort(403, 'Anda tidak memiliki cukup hak akses kepemilikan');
+            } elseif ($info->username == \Auth::user()->username) {
+                $inf = DB::table('tbl_event')->where('tbl_event.id', $id)->first();
+                return view('admin.event.edit', ['ev' => $inf]);
+            } else {
+                abort(404, 'eror');
+            }
+        } else {
+            abort(404, 'eror');
+        }
+        /*if ($info->username != \Auth::user()->username) {
+            abort(403, 'Anda tidak memiliki cukup hak akses kepemilikan');
+        } elseif ($info->username == \Auth::user()->username) {
+            $inf = DB::table('tbl_event')->where('tbl_event.id', $id)->first();
+            return view('admin.event.edit', ['ev' => $inf]);
+        } else {
+            abort(404, 'eror');
+        }*/
         //echo $inf;
-        return view('admin.event.edit', ['ev' => $inf]);
+
     }
 
     /**
@@ -150,19 +172,24 @@ class EventController extends Controller
         $this->validate($request,[
     		'judul' => 'required',
             'konten' => 'required',
-            'kategori' => 'required',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'kategori' => 'required'
+            //'gambar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
-        $info = \App\Pengumuman::findOrFail($id);
+        $info = \App\Event::findOrFail($id);
         $info->username = \Auth::user()->username;
         $info->judul = $request->get('judul');
         $info->slug = str_slug($request->get('judul'));
         $gambar = $request->file('gambar');
-        if($gambar){
-            $cover_path = $gambar->store('info-covers', 'public');
 
-            $info->gambar = $cover_path;
-          }
+        if($gambar){
+            if($info->gambar && file_exists(storage_path('app/public/' . $info->gambar))){
+                \Storage::delete('public/'. $info->gambar);
+            }
+
+            $new_cover_path = $gambar->store('event-covers', 'public');
+
+            $info->gambar = $new_cover_path;
+        }
         $info->konten = $request->get('konten');
         $info->kategori = $request->get('kategori');
         $info->status = $request->get('action');
@@ -205,6 +232,11 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $mhs = Event::findOrFail($id);
+        \Storage::delete('public/'. $mhs->gambar);
+        //Storage::delete($mhs->gambar);
+        $mhs->delete();
+
+        return redirect('/admin/event')->with('status', 'pengumuman is successfully deleted');
     }
 }

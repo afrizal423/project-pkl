@@ -1,4 +1,4 @@
-@extends('admin.master') @section('judul_halaman', 'Tambah data mahasiswa')
+@extends('admin.master') @section('judul_halaman', 'Edit data')
 @section('konten')
 <section id="content">
     <!--breadcrumbs start-->
@@ -15,7 +15,7 @@
                             <a href="{{url('admin')}}">Dashboard</a>
                         </li>
                         <li>
-                            <a href="{{url('admin/pengumuman')}}">Pengumuman</a>
+                            <a href="{{url('admin/event')}}">Event</a>
                         </li>
                         <li class="active">Edit</li>
                         <li class="active">{{$ev->judul}}</li>
@@ -28,20 +28,20 @@
 
     <div class="divider"></div>
     <div id="responsive-table">
-        <h4 class="header">Edit pengumuman</h4>
+        <h4 class="header">Edit Event</h4>
         <div class="row">
             <div class="col s12">
                 @if(session('status'))
                 <div class="alert alert-success">
 
-                    <script>Materialize.toast({{session('status')}}, 4000)</script>
-                    <br>
-                    <a href="{{url('admin/pengumuman')}}" class="waves-effect waves-light blue btn">
+                        {{session('status')}}
+                        <br>
+                    <a href="{{url('admin/event')}}" class="waves-effect waves-light blue btn">
                         Kembali</a>
                 </div>
                 @endif
                 <form
-                    action="{{ route('pengumuman.update', $ev->id) }}"
+                    action="{{ route('event.update', $ev->id) }}"
                     method="POST"
                     enctype="multipart/form-data">
                     {{ method_field('PATCH') }}
@@ -104,6 +104,10 @@
                         <tr>
                             <td>Foto Banner</td>
                             <td>
+                                    <small class="text-muted">Current cover</small><br>
+                                    @if($ev->gambar)
+                                      <img src="{{asset('storage/' . $ev->gambar)}}" width="96px"/>
+                                    @endif
                                 <div class="file-field input-field">
                                     <div class="btn">
                                         <span>File</span>
@@ -118,6 +122,7 @@
                                     </div>
                                     @endif
                                 </div>
+                                <small class="text-muted">Kosongkan jika tidak ingin mengubah cover</small>
                             </td>
                         </tr>
 
