@@ -32,7 +32,9 @@
             <div class="col s12">
                     @if(session('status'))
                     <div class="alert alert-success">
-                      {{session('status')}}
+                      {{session('status')}} <br>
+                      <a href="{{url('admin/prestasi')}}" class="waves-effect waves-light blue btn">
+                        Kembali</a>
                     </div>
                   @endif
                 <form action="{{ route('prestasi.store') }}" method="POST" enctype="multipart/form-data">

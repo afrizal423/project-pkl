@@ -35,6 +35,9 @@
                                     @if(session('status'))
                                     <div class="alert alert-success">
                                       {{session('status')}}
+                                      <br>
+                                      <a href="{{url('admin/event')}}" class="waves-effect waves-light blue btn">
+                                        Kembali</a>
                                     </div>
                                   @endif
                                 <form action="{{ url('admin/event/') }}" method="POST" enctype="multipart/form-data">

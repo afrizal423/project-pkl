@@ -23,6 +23,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::match(['get', 'post'], '/register', function () {
         return redirect("/login");
     });
+    Route::get('admin/profile/', 'profiladmin@index');
 
     //Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/admin', 'AdminController@index')->name('admin');

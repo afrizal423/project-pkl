@@ -139,7 +139,7 @@ class EventController extends Controller
                 abort(403, 'Anda tidak memiliki cukup hak akses kepemilikan');
             } elseif ($info->username == \Auth::user()->username) {
                 $inf = DB::table('tbl_event')->where('tbl_event.id', $id)->first();
-                return view('admin.event.edit', ['ev' => $inf]);
+                return view('admin.event.editdata', ['ev' => $inf]);
             } else {
                 abort(404, 'eror');
             }
