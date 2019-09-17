@@ -222,7 +222,7 @@ class PengumumanController extends Controller
     {
         //
         $mhs = Pengumuman::findOrFail($id_pengumuman);
-        Storage::delete($mhs->gambar);
+        \Storage::delete('public/'. $mhs->gambar);
         $mhs->delete();
 
         return redirect('/admin/pengumuman')->with('status', 'pengumuman is successfully deleted');
