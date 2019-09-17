@@ -39,7 +39,7 @@
                 <h4>{{$inf->judul}}</h4>
                 <div >
                         <img style="width:max-content;height:250px"class="responsive-img" src="{{url('storage',$inf->gambar)}}">
-                        <div  style="font-size:9pt;" class="">By {{$inf->name}} • {{ \Carbon\Carbon::parse($inf->created_at)->format('j F, Y h:i:s A')}}</div>
+                        <div  style="font-size:9pt;" class="">By {{$inf->nama}} • {{ \Carbon\Carbon::parse($inf->created_at)->format('j F, Y h:i:s A')}}</div>
                 </div><hr style="margin:20px">
                 <div>
                         {!!$inf->konten!!}
@@ -49,7 +49,7 @@
         <div class="col s12 m3 l3">
             <div class="card">
                 <div style="margin:10px">
-                <b>Author</b>: {{$inf->name}} <br>
+                <b>Author</b>: {{$inf->nama}} <br>
                 <b>Created at</b>: {{ \Carbon\Carbon::parse($inf->created_at)->format('j F, Y h:i:s A')}} <br>
                 <b>Update at</b>: {{ \Carbon\Carbon::parse($inf->updated_at)->format('j F, Y h:i:s A')}} <br>
                 <a href="{{ route('pengumuman.edit',$inf->id)}}" class="blue waves-effect waves-light  btn">

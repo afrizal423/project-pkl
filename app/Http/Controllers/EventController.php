@@ -26,7 +26,7 @@ class EventController extends Controller
     public function manage()
     {
         //
-        $info = DB::table('tbl_event')->join('users', 'tbl_event.username', '=', 'users.username')->where('tbl_event.username', \Auth::user()->username)->select('tbl_event.*', 'users.name')->paginate(10);
+        $info = DB::table('tbl_event')->join('users', 'tbl_event.username', '=', 'users.username')->where('tbl_event.username', \Auth::user()->username)->select('tbl_event.*', 'users.username')->paginate(10);
         return view('admin.event.manage', ['info' => $info]);
         //echo $info;
     }
@@ -114,7 +114,11 @@ class EventController extends Controller
         if ($info->username != \Auth::user()->username) {
             abort(403, 'Anda tidak memiliki cukup hak akses kepemilikan');
         } elseif ($info->username == \Auth::user()->username) {
-            $info = DB::table('tbl_event')->join('users', 'tbl_event.username', '=', 'users.username')->where('slug', $id)->where('tbl_event.username', \Auth::user()->username)->select('tbl_event.*', 'users.name')->first();
+            $info = DB::table('tbl_event')
+            ->join('users', 'tbl_event.username', '=', 'users.username')
+            ->join('detail_users', 'tbl_event.username', '=', 'detail_users.username')
+            ->where('slug', $id)->where('tbl_event.username', \Auth::user()->username)
+            ->select('tbl_event.*', 'detail_users.nama')->first();
             return view('admin.event.show', ['inf' => $info]);
         } else {
             abort(404, 'eror');

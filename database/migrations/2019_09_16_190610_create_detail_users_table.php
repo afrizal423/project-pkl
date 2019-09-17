@@ -20,7 +20,7 @@ class CreateDetailUsersTable extends Migration
             $table->string('jabatan');
             $table->string('nohp');
             $table->string('username')->unique();
-            $table->foreign('username')->references('username')->on('users');
+            //$table->foreign('username')->references('username')->on('users');
             $table->timestamps();
         });
     }

@@ -120,7 +120,7 @@
                                     </div>
                                     @endif
                                 </div>
-                                <small class="text-muted">Kosongkan jika tidak ingin mengubah cover</small>
+                                <small>Kosongkan jika tidak ingin mengubah cover</small>
                             </td>
                         </tr>
 

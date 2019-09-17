@@ -302,7 +302,7 @@
                                         class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn"
                                         href="#"
                                         style="font-size:;"
-                                        data-activates="profile-dropdown-nav">{{ Auth::user()->name }}
+                                        data-activates="profile-dropdown-nav">{{ Auth::user()->username }}
                                         <i class="mdi-navigation-arrow-drop-down right"></i>
                                     </a>
                                     <p class="user-roal">Administrator</p>

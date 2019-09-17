@@ -26,7 +26,7 @@ class PengumumanController extends Controller
     public function manage()
     {
         //
-        $info = DB::table('tbl_pengumuman')->join('users', 'tbl_pengumuman.username', '=', 'users.username')->where('tbl_pengumuman.username', \Auth::user()->username)->select('tbl_pengumuman.*', 'users.name')->paginate(10);
+        $info = DB::table('tbl_pengumuman')->join('users', 'tbl_pengumuman.username', '=', 'users.username')->where('tbl_pengumuman.username', \Auth::user()->username)->select('tbl_pengumuman.*', 'users.username')->paginate(10);
         return view('admin.pengumuman.manage', ['info' => $info]);
         //echo $info;
     }
@@ -115,7 +115,12 @@ class PengumumanController extends Controller
         if ($info->username != \Auth::user()->username) {
             abort(403, 'Anda tidak memiliki cukup hak akses kepemilikan');
         } elseif ($info->username == \Auth::user()->username) {
-            $info = DB::table('tbl_pengumuman')->join('users', 'tbl_pengumuman.username', '=', 'users.username')->where('slug', $id)->where('tbl_pengumuman.username', \Auth::user()->username)->select('tbl_pengumuman.*', 'users.name')->first();
+            $info = DB::table('tbl_pengumuman')
+            ->join('users', 'tbl_pengumuman.username', '=', 'users.username')
+            ->join('detail_users', 'tbl_pengumuman.username', '=', 'detail_users.username')
+            ->where('slug', $id)->where('tbl_pengumuman.username', \Auth::user()->username)
+            ->select('tbl_pengumuman.*', 'detail_users.nama')->first();
+            //echo json_encode($info);
             return view('admin.pengumuman.show', ['inf' => $info]);
         } else {
             abort(404, 'eror');
