@@ -81,14 +81,14 @@
                                 placeholder="Search"/>
                         </div>
                         <ul class="right hide-on-med-and-down">
-                            <li>
+                            <!--<li>
                                 <a
                                     href="javascript:void(0);"
                                     class="waves-effect waves-block waves-light translation-button"
                                     data-activates="translation-dropdown">
                                     <span class="flag-icon flag-icon-id"></span>
                                 </a>
-                            </li>
+                            </li>-->
                             <li>
                                 <a
                                     href="javascript:void(0);"
@@ -96,7 +96,7 @@
                                     <i class="material-icons">settings_overscan</i>
                                 </a>
                             </li>
-                            <li>
+                            <!--<li>
                                 <a
                                     href="javascript:void(0);"
                                     class="waves-effect waves-block waves-light notification-button"
@@ -105,28 +105,28 @@
                                         <small class="notification-badge pink accent-2">5</small>
                                     </i>
                                 </a>
-                            </li>
+                            </li>-->
                             <li>
                                 <a
                                     href="javascript:void(0);"
                                     class="waves-effect waves-block waves-light profile-button"
                                     data-activates="profile-dropdown">
                                     <span class="avatar-status avatar-online">
-                                        <img src="<?php echo asset('assets/admin/images/avatar/avatar-7.png')?>" alt="avatar">
+                                        <img src="{{asset('storage/' . Auth::user()->avatar)}}" alt="avatar">
                                         <i></i>
                                     </span>
                                 </a>
                             </li>
-                            <li>
+                            <!--<li>
                                 <a
                                     href="#"
                                     data-activates="chat-out"
                                     class="waves-effect waves-block waves-light chat-collapse">
                                     <i class="material-icons">format_indent_increase</i>
                                 </a>
-                            </li>
+                            </li>-->
                         </ul>
-                        <!-- translation-button -->
+                        <!-- translation-button
                         <ul id="translation-dropdown" class="dropdown-content">
                             <li>
                                 <a href="#!" class="grey-text text-darken-1">
@@ -153,8 +153,8 @@
                                     <i class="flag-icon flag-icon-de"></i>
                                     German</a>
                             </li>
-                        </ul>
-                        <!-- notifications-dropdown -->
+                        </ul>-->
+                        <!-- notifications-dropdown
                         <ul id="notifications-dropdown" class="dropdown-content">
                             <li>
                                 <h6>NOTIFICATIONS
@@ -192,15 +192,15 @@
                                     Generate monthly report</a>
                                 <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">1 week ago</time>
                             </li>
-                        </ul>
+                        </ul>-->
                         <!-- profile-dropdown -->
                         <ul id="profile-dropdown" class="dropdown-content">
                             <li>
-                                <a href="#" class="grey-text text-darken-1">
+                                <a href="{{url('admin/profile')}}" class="grey-text text-darken-1">
                                     <i class="material-icons">face</i>
                                     Profile</a>
                             </li>
-                            <li>
+                            <!--<li>
                                 <a href="#" class="grey-text text-darken-1">
                                     <i class="material-icons">settings</i>
                                     Settings</a>
@@ -209,13 +209,13 @@
                                 <a href="#" class="grey-text text-darken-1">
                                     <i class="material-icons">live_help</i>
                                     Help</a>
-                            </li>
+                            </li>-->
                             <li class="divider"></li>
-                            <li>
+                            <!--<li>
                                 <a href="#" class="grey-text text-darken-1">
                                     <i class="material-icons">lock_outline</i>
                                     Lock</a>
-                            </li>
+                            </li>-->
                             <li>
                                 <a
                                     class="grey-text text-darken-1"
@@ -253,18 +253,18 @@
                             <div class="row">
                                 <div class="col col s4 m4 l4">
                                     <img
-                                        src="<?php echo asset('assets/admin/images/avatar/avatar-7.png')?>"
+                                        src="{{asset('storage/' . Auth::user()->avatar)}}"
                                         alt=""
                                         class="circle responsive-img valign profile-image cyan">
                                 </div>
                                 <div class="col col s8 m8 l8">
                                     <ul id="profile-dropdown-nav" class="dropdown-content">
                                         <li>
-                                            <a href="#" class="grey-text text-darken-1">
+                                            <a href="{{url('admin/profile')}}" class="grey-text text-darken-1">
                                                 <i class="material-icons">face</i>
                                                 Profile</a>
                                         </li>
-                                        <li>
+                                       <!-- <li>
                                             <a href="#" class="grey-text text-darken-1">
                                                 <i class="material-icons">settings</i>
                                                 Settings</a>
@@ -273,13 +273,13 @@
                                             <a href="#" class="grey-text text-darken-1">
                                                 <i class="material-icons">live_help</i>
                                                 Help</a>
-                                        </li>
+                                        </li>-->
                                         <li class="divider"></li>
-                                        <li>
+                                        <!--<li>
                                             <a href="#" class="grey-text text-darken-1">
                                                 <i class="material-icons">lock_outline</i>
                                                 Lock</a>
-                                        </li>
+                                        </li>-->
                                         <li>
                                             <a
                                                 class="grey-text text-darken-1"
