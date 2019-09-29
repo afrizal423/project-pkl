@@ -318,7 +318,7 @@
                                     </a>
                                 </li>
                                 <li class="bold">
-                                    <a href="admin.html" class="waves-effect waves-cyan">
+                                    <a href="{{url('admin/user')}}" class="waves-effect waves-cyan">
                                         <i class="material-icons">account_circle</i>
                                         <span class="nav-text">User Management</span>
                                     </a>

@@ -25,6 +25,9 @@ Route::group(['middleware' => ['web']], function () {
     });
     Route::get('admin/profile/', 'profiladmin@index');
 
+    Route::resource("admin/user", "UserManage");
+
+
     //Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/admin', 'AdminController@index')->name('admin');
     Route::get('admin/mahasiswa/lihat', 'MahasiswaController@lihat');
