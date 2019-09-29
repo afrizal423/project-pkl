@@ -32,7 +32,8 @@
             <div class="col s12">
                     @if(session('status'))
                     <div class="alert alert-success">
-                      {{session('status')}}
+                      {{session('status')}}<br><a href="{{url('admin/mahasiswa')}}" class="waves-effect waves-light blue btn">
+                        Kembali</a>
                     </div>
                   @endif
                 <form action="{{ url('admin/mahasiswa/') }}" method="POST">
@@ -69,8 +70,22 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Jurusan</td>
+                            <td>Program Studi</td>
                             <td>
+                                    <div class="input-field">
+                                            <select name="jurusan">
+                                                <option value="" disabled="disabled" selected="selected">Program Studi</option>
+                                                <option value="Teknik Informatika">Teknik Informatika</option>
+                                                <option value="Sistem Informasi">Sistem Informasi</option>
+                                            </select>
+                                            <label>Program Studi</label>
+                                            @if($errors->has('jurusan'))
+                                        <div class="text-danger">
+                                            {{ $errors->first('jurusan')}}
+                                        </div>
+                                    @endif
+                                        </div>
+<!--
                                 <div class="input-field">
                                     <input id="jurusan" name="jurusan" type="text" class="validate">
                                     <label for="jurusan">Jurusan</label>
@@ -79,7 +94,7 @@
                                     {{ $errors->first('jurusan')}}
                                 </div>
                             @endif
-                                </div>
+                                </div>-->
                             </td>
                         </tr>
                         <tr>

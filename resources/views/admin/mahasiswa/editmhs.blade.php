@@ -1,4 +1,4 @@
-@extends('admin.master') @section('judul_halaman', 'Tambah data mahasiswa')
+@extends('admin.master') @section('judul_halaman', 'Edit data mahasiswa')
 @section('konten')
 <section id="content">
     <!--breadcrumbs start-->
