@@ -43,6 +43,9 @@
             type="text/css"
             rel="stylesheet">
             <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+            <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+
+            <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
     </head>
     <body>
         <!-- Start Page Loading -->
