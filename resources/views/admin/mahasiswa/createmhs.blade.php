@@ -155,7 +155,34 @@
                             @endif
                             </td>
                         </tr>
-
+                        <tr>
+                            <td>Status Mahasiswa</td>
+                            <td>
+                                    <div class="input-field">
+                                            <select name="status">
+                                                <option value="" disabled="disabled" selected="selected">Status</option>
+                                                <option value="Aktif">Aktif</option>
+                                                <option value="Alumni">Alumni</option>
+                                            </select>
+                                            <label>Status</label>
+                                            @if($errors->has('status'))
+                                        <div class="text-danger">
+                                            {{ $errors->first('status')}}
+                                        </div>
+                                    @endif
+                                        </div>
+<!--
+                                <div class="input-field">
+                                    <input id="jurusan" name="jurusan" type="text" class="validate">
+                                    <label for="jurusan">Jurusan</label>
+                                    @if($errors->has('jurusan'))
+                                <div class="text-danger">
+                                    {{ $errors->first('jurusan')}}
+                                </div>
+                            @endif
+                                </div>-->
+                            </td>
+                        </tr>
                         <tr>
                             <td></td>
                             <td>

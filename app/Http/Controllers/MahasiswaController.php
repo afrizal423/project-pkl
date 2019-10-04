@@ -54,7 +54,8 @@ class MahasiswaController extends Controller
             'angkatan' => 'required',
             'asal' => 'required',
             'jenis_kelamin' => 'required',
-            'tgl_lahir' => 'required'
+            'tgl_lahir' => 'required',
+            'status' => 'required'
         ]);
 	    $mhs = new \App\Mahasiswa();
         $mhs->npm = $request->get('npm');
@@ -64,6 +65,7 @@ class MahasiswaController extends Controller
         $mhs->asal = $request->get('asal');
         $mhs->jenis_kelamin = $request->get('jenis_kelamin');
         $mhs->tgl_lahir = $request->get('tgl_lahir');
+        $mhs->status = $request->get('status');
 
         $mhs->save();
 
@@ -117,7 +119,9 @@ class MahasiswaController extends Controller
             'angkatan' => 'required',
             'asal' => 'required',
             'jenis_kelamin' => 'required',
-            'tgl_lahir' => 'required'
+            'tgl_lahir' => 'required',
+            'status' => 'required'
+
         ]);
         $mhs->npm = $request->get('npm');
         $mhs->nama = $request->get('nama');
@@ -126,6 +130,8 @@ class MahasiswaController extends Controller
         $mhs->asal = $request->get('asal');
         $mhs->jenis_kelamin = $request->get('jenis_kelamin');
         $mhs->tgl_lahir = $request->get('tgl_lahir');
+        $mhs->status = $request->get('status');
+
 
         $mhs->save();
 

@@ -66,7 +66,7 @@
                         <ul class="left">
                             <li>
                                 <h1 class="logo-wrapper">
-                                    <a href="index.html" class="brand-logo darken-1">
+                                    <a href="{{url('admin')}}" class="brand-logo darken-1">
                                         <img
                                             src="https://www.upnjatim.ac.id/wp-content/uploads/2018/05/logoupnbaru.png"
                                             alt="materialize logo">
@@ -315,7 +315,7 @@
                         <li class="no-padding">
                             <ul class="collapsible" data-collapsible="accordion">
                                 <li class="bold">
-                                    <a href="index.html" class="waves-effect waves-cyan">
+                                    <a href="{{url('admin')}}" class="waves-effect waves-cyan">
                                         <i class="material-icons">pie_chart_outlined</i>
                                         <span class="nav-text">Dashboard</span>
                                     </a>
@@ -375,11 +375,12 @@
                                     </a>
                                 </li>
                                 <li class="bold">
-                                    <a href="admin.html" class="waves-effect waves-cyan">
+                                    <a href="{{url('admin/alumni')}}" class="waves-effect waves-cyan">
                                         <i class="material-icons">group</i>
                                         <span class="nav-text">Alumni</span>
                                     </a>
                                 </li>
+                                <!--
                                 <li class="bold">
                                     <a class="collapsible-header  waves-effect waves-cyan">
                                     <i class="material-icons">chrome_reader_mode</i>Surat</a>
@@ -416,7 +417,7 @@
                                         </li>
                                     </ul>
                                 </li>
-
+                            -->
                             </ul>
                         </li>
                     </ul>

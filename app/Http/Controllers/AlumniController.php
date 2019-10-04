@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class AlumniController extends Controller
 {
@@ -14,6 +16,8 @@ class AlumniController extends Controller
     public function index()
     {
         //
+        $mhs = DB::table('tbl_mahasiswa')->where('status','Alumni')->orderBy('npm', 'asc')->paginate(10);
+        return view('admin.mahasiswa.index', ['mhs' => $mhs]);
     }
 
     /**

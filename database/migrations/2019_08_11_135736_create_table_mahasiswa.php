@@ -22,6 +22,7 @@ class CreateTableMahasiswa extends Migration
             $table->string('asal', 50);
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
             $table->date('tgl_lahir');
+            $table->enum('status', ['Aktif', 'Alumni']);
             $table->timestamps();
         });
     }
