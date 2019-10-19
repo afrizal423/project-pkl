@@ -7,6 +7,8 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AdminSeeder' => $baseDir . '/database/seeds/AdminSeeder.php',
+    'App\\Charts\\FusionChrt' => $baseDir . '/app/Charts/FusionChrt.php',
+    'App\\Charts\\SampleChart' => $baseDir . '/app/Charts/SampleChart.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Event' => $baseDir . '/app/Event.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
@@ -42,6 +44,7 @@ return array(
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Mahasiswa' => $baseDir . '/app/Mahasiswa.php',
     'App\\Pengumuman' => $baseDir . '/app/Pengumuman.php',
+    'App\\Pkl' => $baseDir . '/app/Pkl.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',

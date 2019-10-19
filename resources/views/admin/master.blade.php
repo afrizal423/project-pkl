@@ -351,7 +351,7 @@
                                     </a>
                                 </li>
                                 <li class="bold">
-                                    <a href="admin.html" class="waves-effect waves-cyan">
+                                    <a href="{{url('admin/pkl')}}" class="waves-effect waves-cyan">
                                         <i class="material-icons">list</i>
                                         <span class="nav-text">PKL</span>
                                     </a>

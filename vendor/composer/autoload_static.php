@@ -419,6 +419,8 @@ class ComposerStaticInitbb782ae838bd420e232217339de73e5a
 
     public static $classMap = array (
         'AdminSeeder' => __DIR__ . '/../..' . '/database/seeds/AdminSeeder.php',
+        'App\\Charts\\FusionChrt' => __DIR__ . '/../..' . '/app/Charts/FusionChrt.php',
+        'App\\Charts\\SampleChart' => __DIR__ . '/../..' . '/app/Charts/SampleChart.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Event' => __DIR__ . '/../..' . '/app/Event.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -454,6 +456,7 @@ class ComposerStaticInitbb782ae838bd420e232217339de73e5a
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Mahasiswa' => __DIR__ . '/../..' . '/app/Mahasiswa.php',
         'App\\Pengumuman' => __DIR__ . '/../..' . '/app/Pengumuman.php',
+        'App\\Pkl' => __DIR__ . '/../..' . '/app/Pkl.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
