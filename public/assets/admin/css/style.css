@@ -6640,7 +6640,8 @@ ul.side-nav.leftside-navigation li:not(.no-padding) a {
 }
 
 ul.side-nav.leftside-navigation li:not(.no-padding).user-details {
-  background: url("http://fik.upnjatim.ac.id/images/Upload_FIK/Tugu_FIK.jpg") no-repeat center center;
+  /*background: url("http://fik.upnjatim.ac.id/images/Upload_FIK/Tugu_FIK.jpg") no-repeat center center;*/
+  background: url("https://upload.wikimedia.org/wikipedia/commons/7/7a/Pemandangan_dari_puncak_gunung_prau%2C_Dieng%2C_Wonosobo%2C_Jawa_Tengah%2C_04072015.jpg") no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

@@ -18,33 +18,33 @@
   <title>Halaman login</title>
 
   <!-- Favicons-->
-  <link rel="icon" href="https://www.upnjatim.ac.id/wp-content/uploads/2018/05/logoupnbaru.png" sizes="32x32">
+  <link rel="icon" href="<?php echo asset('images/logo.png')?>" sizes="32x32">
   <!-- Favicons-->
-  <link rel="apple-touch-icon-precomposed" href="https://www.upnjatim.ac.id/wp-content/uploads/2018/05/logoupnbaru.png">
+  <link rel="apple-touch-icon-precomposed" href="<?php echo asset('images/logo.png')?>">
   <!-- For iPhone -->
   <meta name="msapplication-TileColor" content="#00bcd4">
-  <meta name="msapplication-TileImage" content="https://www.upnjatim.ac.id/wp-content/uploads/2018/05/logoupnbaru.png">
+  <meta name="msapplication-TileImage" content="<?php echo asset('images/logo.png')?>">
   <!-- For Windows Phone -->
 
 
   <!-- CORE CSS-->
-  
+
   <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
-    <!-- Custome CSS-->    
+    <!-- Custome CSS-->
     <link href="assets/css/custom/custom-style.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="assets/css/layouts/page-center.css" type="text/css" rel="stylesheet" media="screen,projection">
 
   <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
   <link href="assets/js/plugins/prism/prism.css" type="text/css" rel="stylesheet" media="screen,projection">
   <link href="assets/js/plugins/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
-  
+
 </head>
 
 <body class="green darken-4">
   <!-- Start Page Loading -->
   <div id="loader-wrapper">
-      <div id="loader"></div>        
+      <div id="loader"></div>
       <div class="loader-section section-left"></div>
       <div class="loader-section section-right"></div>
   </div>
@@ -58,7 +58,7 @@
           @csrf
         <div class="row">
           <div class="input-field col s12 center">
-            <img src="https://www.upnjatim.ac.id/wp-content/uploads/2018/05/logoupnbaru.png" alt="" class="responsive-img valign profile-image-login">
+            <img src="<?php echo asset('images/logo.png')?>" alt="" class="responsive-img valign profile-image-login">
             <p class="center login-form-text">Bidang 3 Kemahasiswaan Fakultas ilmu Komputer<br>UPN "Veteran" Jawa Timur</p>
           </div>
         </div>
@@ -86,7 +86,7 @@
             <label for="password">Password</label>
           </div>
         </div>
-        <div class="row">          
+        <div class="row">
           <div class="input-field col s12 m12 l12  login-text">
               <input type="checkbox" id="remember-me" />
               <label for="remember-me">Ingat Kata Sandi</label>
@@ -99,7 +99,7 @@
                     </button>
           </div>
         </div>
-        
+
 
       </form>
     </div>

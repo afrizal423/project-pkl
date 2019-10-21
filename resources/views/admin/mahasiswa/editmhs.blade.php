@@ -9,7 +9,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s10 m6 l6">
-                    <h5 class="breadcrumbs-title">Tambah Data Mahasiswa</h5>
+                    <h5 class="breadcrumbs-title">Edit Data Mahasiswa</h5>
                     <ol class="breadcrumbs">
                         <li>
                             <a href="{{url('admin')}}">Dashboard</a>
@@ -17,7 +17,7 @@
                         <li>
                             <a href="{{url('admin/mahasiswa')}}">List Mahasiswa</a>
                         </li>
-                        <li class="active">Tambah Data Mahasiswa</li>
+                        <li class="active">Edit Data Mahasiswa</li>
                     </ol>
                 </div>
 
@@ -27,7 +27,7 @@
 
     <div class="divider"></div>
     <div id="responsive-table">
-        <h4 class="header">Tambah Data Mahasiswa Fakultas Ilmu Komputer</h4>
+        <h4 class="header">Edit Data Mahasiswa Fakultas Ilmu Komputer</h4>
         <div class="row">
             <div class="col s12">
                     @if(session('status'))
@@ -70,17 +70,21 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Jurusan</td>
+                            <td>Program Studi</td>
                             <td>
-                                <div class="input-field">
-                                    <input id="jurusan" name="jurusan" type="text" class="validate" value="{{$mhs->jurusan}}">
-                                    <label for="jurusan">Jurusan</label>
-                                    @if($errors->has('jurusan'))
-                                <div class="text-danger">
-                                    {{ $errors->first('jurusan')}}
-                                </div>
-                            @endif
-                                </div>
+                                    <div class="input-field">
+                                            <select name="jurusan">
+                                                <option value="" disabled="disabled">Program Studi</option>
+                                                <option value="Teknik Informatika" @if($mhs->jurusan == "Teknik Informatika") selected="selected" @endif>Teknik Informatika</option>
+                                                <option value="Sistem Informasi" @if($mhs->jurusan == "Sistem Informasi") selected="selected" @endif>Sistem Informasi</option>
+                                            </select>
+                                            <label>Program Studi</label>
+                                            @if($errors->has('jurusan'))
+                                        <div class="text-danger">
+                                            {{ $errors->first('jurusan')}}
+                                        </div>
+                                    @endif
+                                        </div>
                             </td>
                         </tr>
                         <tr>
@@ -117,9 +121,9 @@
                             <td>
                                 <div class="input-field">
                                     <select name="jenis_kelamin" value="{{$mhs->jenis_kelamin}}">
-                                        <option value="" disabled="disabled" selected="selected">Jenis Kelamin</option>
-                                        <option value="Laki-laki">Laki-laki</option>
-                                        <option value="Perempuan">Perempuan</option>
+                                        <option value="" disabled="disabled">Jenis Kelamin</option>
+                                        <option value="Laki-laki" @if($mhs->jenis_kelamin == "Laki-laki") selected="selected" @endif>Laki-laki</option>
+                                        <option value="Perempuan" @if($mhs->jenis_kelamin == "Perempuan") selected="selected" @endif>Perempuan</option>
                                     </select>
                                     <label>Jenis</label>
                                     @if($errors->has('jenis_kelamin'))
@@ -146,9 +150,9 @@
                             <td>
                                     <div class="input-field">
                                             <select name="status">
-                                                <option value="" disabled="disabled" selected="selected">Status</option>
-                                                <option value="Aktif">Aktif</option>
-                                                <option value="Alumni">Alumni</option>
+                                                <option value="" disabled="disabled" >Status</option>
+                                                <option value="Aktif" @if($mhs->status == "Aktif") selected="selected" @endif>Aktif</option>
+                                                <option value="Alumni" @if($mhs->status == "Alumni") selected="selected" @endif>Alumni</option>
                                             </select>
                                             <label>Status</label>
                                             @if($errors->has('status'))

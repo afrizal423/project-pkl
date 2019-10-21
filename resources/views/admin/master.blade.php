@@ -14,7 +14,7 @@
             content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
         <title>@yield('judul_halaman')</title>
         <!-- Favicons-->
-        <link rel="icon" href="https://www.upnjatim.ac.id/wp-content/uploads/2018/05/logoupnbaru.png" sizes="32x32">
+        <link rel="icon" href="<?php echo asset('images/logo.png')?>" sizes="32x32">
         <!-- Favicons-->
         <link
             rel="apple-touch-icon-precomposed"
@@ -68,7 +68,7 @@
                                 <h1 class="logo-wrapper">
                                     <a href="{{url('admin')}}" class="brand-logo darken-1">
                                         <img
-                                            src="https://www.upnjatim.ac.id/wp-content/uploads/2018/05/logoupnbaru.png"
+                                            src="<?php echo asset('images/logo.png')?>"
                                             alt="materialize logo">
                                         <span class="logo-text hide-on-med-and-down">Fasilkom</span>
                                     </a>

@@ -87,7 +87,9 @@ class PklController extends Controller
      */
     public function edit($id)
     {
-        //
+        $mhs = Pkl::findOrFail($id);
+        return view('admin.pkl.editpkl', compact('mhs'));
+        //echo json_encode($mhs);
     }
 
     /**
@@ -100,6 +102,29 @@ class PklController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request,[
+            'nama' => 'required',
+            'npm' => 'required',
+            'jurusan' => 'required',
+            'judulpkl' => 'required',
+            'namainstansi' => 'required',
+            'alamatinstansi' => 'required'
+        ]);
+        $mhs = Pkl::findOrFail($id);
+        $mhs->nama = $request->get('nama');
+        $mhs->npm = $request->get('npm');
+        $mhs->jurusan = $request->get('jurusan');
+        $mhs->judulpkl = $request->get('judulpkl');
+        $mhs->namainstansi = $request->get('namainstansi');
+        $mhs->alamatinstansi = $request->get('alamatinstansi');
+
+        $mhs->save();
+
+        if($request->get('action') == 'PUBLISH'){
+            return redirect()
+                  ->route('pkl.edit', ['id'=>$mhs->id])
+                  ->with('status', 'Data Sukses diupdate dalam database');
+          }
     }
 
     /**
