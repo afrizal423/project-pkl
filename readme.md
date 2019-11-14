@@ -13,10 +13,8 @@ Project ini adalah project yang diberikan oleh wadek 3 fakultas. Project ini jug
 - Data Mahasiswa
 - Pengumuman
 - Event
-- Ormawa
 - PKL
-- Magang
 - Tugas Akhir
 - Prestasi
 - Alumni
-- Karya Tulis Ilmiah / Journal / Paper
+- Rest API
