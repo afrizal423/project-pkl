@@ -344,26 +344,26 @@
                                         <span class="nav-text">Event</span>
                                     </a>
                                 </li>
-                                <li class="bold">
+                                <!--<li class="bold">
                                     <a href="admin.html" class="waves-effect waves-cyan">
                                         <i class="material-icons">group</i>
                                         <span class="nav-text">Ormawa</span>
                                     </a>
-                                </li>
+                                </li>-->
                                 <li class="bold">
                                     <a href="{{url('admin/pkl')}}" class="waves-effect waves-cyan">
                                         <i class="material-icons">list</i>
                                         <span class="nav-text">PKL</span>
                                     </a>
                                 </li>
-                                <li class="bold">
+                                <!--<li class="bold">
                                     <a href="admin.html" class="waves-effect waves-cyan">
                                         <i class="material-icons">local_activity</i>
                                         <span class="nav-text">Magang</span>
                                     </a>
-                                </li>
+                                </li>-->
                                 <li class="bold">
-                                    <a href="admin.html" class="waves-effect waves-cyan">
+                                    <a href="{{url('admin/ta')}}" class="waves-effect waves-cyan">
                                         <i class="material-icons">mood</i>
                                         <span class="nav-text">Tugas Akhir</span>
                                     </a>

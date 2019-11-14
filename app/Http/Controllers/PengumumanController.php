@@ -92,11 +92,11 @@ class PengumumanController extends Controller
 
           if($request->get('action') == 'PUBLISH'){
             return redirect()
-                  ->route('pengumuman.create')
+                  ->route('pengumuman.index')
                   ->with('status', 'pengumuman successfully saved and published');
           } else {
             return redirect()
-                  ->route('pengumuman.create')
+                  ->route('pengumuman.index')
                   ->with('status', 'pengumuman saved as draft');
           }
     }
@@ -208,11 +208,12 @@ class PengumumanController extends Controller
 
           if($request->get('action') == 'PUBLISH'){
             return redirect()
-                  ->route('pengumuman.edit',['inf' => $info->id])
+                  //->route('pengumuman.edit',['inf' => $info->id])
+                  ->route('pengumuman.index')
                   ->with('status', 'pengumuman successfully saved and published');
           } else {
             return redirect()
-                  ->route('pengumuman.edit',['inf' => $info->id])
+                  ->route('pengumuman.index')
                   ->with('status', 'pengumuman saved as draft');
           }
     }

@@ -462,6 +462,7 @@ class ComposerStaticInitbb782ae838bd420e232217339de73e5a
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'App\\Tugasakhir' => __DIR__ . '/../..' . '/app/Tugasakhir.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'App\\detail_users' => __DIR__ . '/../..' . '/app/detail_users.php',
         'App\\persma' => __DIR__ . '/../..' . '/app/persma.php',

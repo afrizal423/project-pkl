@@ -48,8 +48,21 @@ class AdminController extends Controller
         $jurusan->title('Jumlah Mahasiswa Fakultas Ilmu Komputer Tiap Jurusan', 14, '#666', true, "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif");
 
         $aa = \App\Mahasiswa::distinct()->pluck('angkatan')->toArray();
-        //echo json_encode($sumjur);
-        return view('admin.app', ['chart' => $chart, 'jurusan' => $jurusan]);
+
+        $thn = \App\persma::select(DB::raw('year(waktu_kegiatan) as waktu'))->distinct()->orderBy('waktu', 'asc')->pluck('waktu')->toArray();
+        $jur = DB::table('tbl_prestasi')->select(DB::raw('count(*) as user_count, year(waktu_kegiatan) as waktu'))->groupBy('waktu')
+        ->orderBy('waktu', 'asc')->pluck('user_count')->toArray();
+
+        $prestasi = new FusionChrt;
+        $pr = \App\persma::select(DB::raw('year(waktu_kegiatan) as waktu, jurusan'))->distinct()->orderBy('jurusan', 'asc')->pluck('jurusan')->toArray();
+        $pres = DB::table('tbl_prestasi')->select(DB::raw('count(*) as user_count, year(waktu_kegiatan) as waktu'))->groupBy('waktu')
+        ->orderBy('waktu', 'asc')->pluck('user_count')->toArray();
+        $prestasi->labels($pr);
+        $prestasi->dataset('Jurusan', 'bar3d',$pres);
+        $prestasi->title('Prestasi Mahasiswa Fakultas Ilmu Komputer Tiap Jurusan', 14, '#666', true, "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif");
+
+        //echo json_encode($pres);
+        return view('admin.app', ['chart' => $chart, 'jurusan' => $jurusan, 'prestasi' => $prestasi]);
     }
 
     public function mahasiswa()

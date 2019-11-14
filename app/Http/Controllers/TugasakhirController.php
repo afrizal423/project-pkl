@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Tugasakhir;
+use Image;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class TugasakhirController extends Controller
 {
@@ -13,7 +17,8 @@ class TugasakhirController extends Controller
      */
     public function index()
     {
-        //
+        $mhs = DB::table('data_tugasakhir')->orderBy('id', 'asc')->paginate(10);
+        return view('admin.tugasakhir.index', ['mhs' => $mhs]);
     }
 
     /**
@@ -24,6 +29,7 @@ class TugasakhirController extends Controller
     public function create()
     {
         //
+        return view('admin.tugasakhir.create');
     }
 
     /**
@@ -35,6 +41,29 @@ class TugasakhirController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request,[
+            'nama' => 'required',
+            'npm' => 'required',
+            'jurusan' => 'required',
+            'judul' => 'required',
+            'dospem1' => 'required',
+            'dospem2' => 'required'
+        ]);
+	    $mhs = new \App\Tugasakhir();
+        $mhs->nama = $request->get('nama');
+        $mhs->npm = $request->get('npm');
+        $mhs->jurusan = $request->get('jurusan');
+        $mhs->judul = $request->get('judul');
+        $mhs->dospem1 = $request->get('dospem1');
+        $mhs->dospem2 = $request->get('dospem2');
+
+        $mhs->save();
+
+        if($request->get('action') == 'PUBLISH'){
+            return redirect()
+                  ->route('ta.index')
+                  ->with('status', 'Data Sukses ditambahkan dalam database');
+          }
     }
 
     /**
@@ -57,6 +86,8 @@ class TugasakhirController extends Controller
     public function edit($id)
     {
         //
+        $mhs = Tugasakhir::findOrFail($id);
+        return view('admin.tugasakhir.editta', compact('mhs'));
     }
 
     /**
@@ -69,6 +100,29 @@ class TugasakhirController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $this->validate($request,[
+            'nama' => 'required',
+            'npm' => 'required',
+            'jurusan' => 'required',
+            'judul' => 'required',
+            'dospem1' => 'required',
+            'dospem2' => 'required'
+        ]);
+        $mhs = Tugasakhir::findOrFail($id);
+        $mhs->nama = $request->get('nama');
+        $mhs->npm = $request->get('npm');
+        $mhs->jurusan = $request->get('jurusan');
+        $mhs->judul = $request->get('judul');
+        $mhs->dospem1 = $request->get('dospem1');
+        $mhs->dospem2 = $request->get('dospem2');
+
+        $mhs->save();
+
+        if($request->get('action') == 'PUBLISH'){
+            return redirect()
+                  ->route('ta.index')
+                  ->with('status', 'Data Sukses diupdate dalam database');
+          }
     }
 
     /**
@@ -80,5 +134,9 @@ class TugasakhirController extends Controller
     public function destroy($id)
     {
         //
+        $mhs = Tugasakhir::findOrFail($id);
+        $mhs->delete();
+
+        return redirect('/admin/ta')->with('success', 'Data TA is successfully deleted');
     }
 }

@@ -1,4 +1,4 @@
-@extends('admin.master') @section('judul_halaman', 'Tambah data PKL mahasiswa')
+@extends('admin.master') @section('judul_halaman', 'Edit data TA')
 @section('konten')
 <section id="content">
     <!--breadcrumbs start-->
@@ -9,15 +9,15 @@
         <div class="container">
             <div class="row">
                 <div class="col s10 m6 l6">
-                    <h5 class="breadcrumbs-title">Tambah Data PKL Mahasiswa</h5>
+                    <h5 class="breadcrumbs-title">Edit Data TA</h5>
                     <ol class="breadcrumbs">
                         <li>
                             <a href="{{url('admin')}}">Dashboard</a>
                         </li>
                         <li>
-                            <a href="{{url('admin/pkl')}}">List PKL Mahasiswa</a>
+                            <a href="{{url('admin/ta')}}">List TA</a>
                         </li>
-                        <li class="active">Tambah Data PKL Mahasiswa</li>
+                        <li class="active">Edit Data TA</li>
                     </ol>
                 </div>
 
@@ -27,7 +27,7 @@
 
     <div class="divider"></div>
     <div id="responsive-table">
-        <h4 class="header">Tambah Data PKL Mahasiswa Fakultas Ilmu Komputer</h4>
+        <h4 class="header">Edit Data Tugas Akhir Mahasiswa Fakultas Ilmu Komputer</h4>
         <div class="row">
             <div class="col s12">
                   {{-- menampilkan error validasi --}}
@@ -42,13 +42,12 @@
                   @endif
                     @if(session('status'))
                     <div class="alert alert-success">
-                      {{session('status')}} <br>
-                      <a href="{{url('admin/pkl')}}" class="waves-effect waves-light blue btn">
+                      {{session('status')}} <br><a href="{{url('admin/ta')}}" class="waves-effect waves-light blue btn">
                         Kembali</a>
                     </div>
                   @endif
-                <form action="{{ route('pkl.store') }}" method="POST" enctype="multipart/form-data">
-                    {{ method_field('POST') }}
+                <form action="{{ route('ta.update', $mhs->id) }}" method="POST">
+                    {{ method_field('PATCH') }}
                     {{ csrf_field() }}
 
                     <table style="margin:20px auto;">
@@ -56,7 +55,7 @@
                             <td>Nama Mahasiswa</td>
                             <td>
                                 <div class="input-field">
-                                    <input id="nama" name="nama" type="text" class="validate">
+                                    <input id="nama" name="nama" type="text" class="validate" value="{{$mhs->nama}}">
                                     <label for="nama">Nama Mahasiswa</label>
                                     @if($errors->has('nama'))
                                     <div class="text-danger">
@@ -67,16 +66,16 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>NPM</td>
+                            <td>NPM Mahasiswa</td>
                             <td>
                                 <div class="input-field">
-                                    <input id="jurusan" name="npm" type="text" class="validate">
-                                    <label for="jurusan">NPM</label>
+                                    <input id="npm" name="npm" type="text" class="validate" value="{{$mhs->npm}}">
+                                    <label for="npm">NPM Mahasiswa</label>
                                     @if($errors->has('npm'))
-                                <div class="text-danger">
-                                    {{ $errors->first('npm')}}
-                                </div>
-                            @endif
+                                    <div class="text-danger">
+                                        {{ $errors->first('npm')}}
+                                    </div>
+                                    @endif
                                 </div>
                             </td>
                         </tr>
@@ -85,9 +84,9 @@
                             <td>
                                     <div class="input-field">
                                             <select name="jurusan">
-                                                <option value="" disabled="disabled" selected="selected">Program Studi</option>
-                                                <option value="Teknik Informatika">Teknik Informatika</option>
-                                                <option value="Sistem Informasi">Sistem Informasi</option>
+                                                <option value="" disabled="disabled">Program Studi</option>
+                                                <option value="Teknik Informatika" @if($mhs->jurusan == "Teknik Informatika") selected="selected" @endif>Teknik Informatika</option>
+                                                <option value="Sistem Informasi" @if($mhs->jurusan == "Sistem Informasi") selected="selected" @endif>Sistem Informasi</option>
                                             </select>
                                             <label>Program Studi</label>
                                             @if($errors->has('jurusan'))
@@ -99,49 +98,47 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Judul PKL</td>
+                            <td>Judul TA</td>
                             <td>
                                 <div class="input-field">
-                                    <input id="namakeg" name="judulpkl" type="text" class="validate">
-                                    <label for="namakeg">Judul PKL</label>
-                                    @if($errors->has('judulpkl'))
+                                    <input id="namakeg" name="judul" type="text" class="validate" value="{{$mhs->judul}}">
+                                    <label for="namakeg">Judul TA</label>
+                                    @if($errors->has('judul'))
                                 <div class="text-danger">
-                                    {{ $errors->first('judulpkl')}}
+                                    {{ $errors->first('judul')}}
                                 </div>
                             @endif
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td>Nama Instansi</td>
+                            <td>Nama Dosen Pembimbing 1</td>
                             <td>
                                 <div class="input-field">
-                                    <input id="namakeg" name="namainstansi" type="text" class="validate">
-                                    <label for="namakeg">Nama Instansi</label>
-                                    @if($errors->has('namainstansi'))
+                                    <input id="namakeg" name="dospem1" type="text" class="validate" value="{{$mhs->dospem1}}">
+                                    <label for="namakeg">Nama Dosen Pembimbing 1</label>
+                                    @if($errors->has('dospem1'))
                                 <div class="text-danger">
-                                    {{ $errors->first('namainstansi')}}
+                                    {{ $errors->first('dospem1')}}
                                 </div>
                             @endif
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td>Alamat Instansi</td>
+                            <td>Nama Dosen Pembimbing 1</td>
                             <td>
                                 <div class="input-field">
-                                    <input id="namakeg" name="alamatinstansi" type="text" class="validate">
-                                    <label for="namakeg">Alamat Instansi</label>
-                                    @if($errors->has('alamatinstansi'))
+                                    <input id="namakeg" name="dospem2" type="text" class="validate" value="{{$mhs->dospem2}}">
+                                    <label for="namakeg">Nama Dosen Pembimbing 2</label>
+                                    @if($errors->has('dospem1'))
                                 <div class="text-danger">
-                                    {{ $errors->first('alamatinstansi')}}
+                                    {{ $errors->first('dospem1')}}
                                 </div>
                             @endif
                                 </div>
                             </td>
                         </tr>
-
-
                         <tr>
                             <td></td>
                             <td>

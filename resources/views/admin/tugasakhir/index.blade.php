@@ -1,5 +1,5 @@
 @extends('admin.master')
-@section('judul_halaman', 'Prestasi Mahasiswa')
+@section('judul_halaman', 'Tugas Akhir Mahasiswa')
 @section('konten')
 <!-- START CONTENT -->
 
@@ -17,12 +17,12 @@
         <div class="container">
             <div class="row">
                 <div class="col s10 m6 l6">
-                    <h5 class="breadcrumbs-title">Data Prestasi Mahasiswa</h5>
+                    <h5 class="breadcrumbs-title">Data Tugas Akhir Mahasiswa</h5>
                     <ol class="breadcrumbs">
                         <li>
                             <a href="{{url('admin')}}">Dashboard</a>
                         </li>
-                        <li class="active">Prestasi Mahasiswa</li>
+                        <li class="active">Tugas Akhir Mahasiswa</li>
                     </ol>
                 </div>
 
@@ -41,7 +41,7 @@
                     <div class="container">
                         <div class="col s12">
 
-                            <a href="{{url('admin/prestasi/create')}}" class="waves-effect waves-light  btn">
+                            <a href="{{url('admin/ta/create')}}" class="waves-effect waves-light  btn">
                                 <i class="material-icons left">add</i>
                                 Add Data</a>
                             <!--<button data-target="modal1" class="btn modal-trigger">Tambah Record</button>-->
@@ -60,17 +60,16 @@
         <!--Responsive Table-->
         <div class="divider"></div>
         <div id="responsive-table">
-            <h4 class="header">Data Prestasi Mahasiswa Fakultas Ilmu Komputer</h4>
+            <h4 class="header">Data Tugas Akhir Mahasiswa Fakultas Ilmu Komputer</h4>
             <div class="row">
                 <div class="col s12">
                     <table class="responsive-table">
                         <thead>
                             <tr>
                                 <th data-field="no">Nama Mahasiswa</th>
-                                <th data-field="id">Nama Kegiatan/Acara</th>
-                                <th data-field="name">Waktu Penyelenggaraan</th>
-                                <th data-field="email">Prestasi Yang dicapai</th>
-                                <th data-field="address">Individu/Team</th>
+                                <th data-field="id">NPM Mahasiswa</th>
+                                <th data-field="name">Jurusan</th>
+                                <th data-field="email">Judul</th>
                                 <th data-field="age">View</th>
                                 <th data-field="action">Action</th>
                             </tr>
@@ -79,18 +78,17 @@
                             @foreach ($mhs as $mahasiswa)
 
                             <tr>
-                                <td>{{ $mahasiswa->nama_mhs }}</td>
-                                <td>{{ $mahasiswa->nama_kegiatan }}</td>
-                                <td>{{ $mahasiswa->waktu_kegiatan }}</td>
-                                <td>{{ $mahasiswa->prestasi_kejuaraan }}</td>
-                                <td>{{ $mahasiswa->kelompok }}</td>
+                                <td>{{ $mahasiswa->nama }}</td>
+                                <td>{{ $mahasiswa->npm }}</td>
+                                <td>{{ $mahasiswa->jurusan }}</td>
+                                <td>{{ $mahasiswa->judul }}</td>
                                 <td>
                                     <button data-target="{{ $mahasiswa->id }}" class="btn modal-trigger">Detail</button>
                                     <!-- Modal Structure -->
                                     <div id="{{ $mahasiswa->id }}" class="modal">
                                         <div class="modal-content">
                                             <div id="responsive-table">
-                                                <h4 class="header">Data Prestasi Mahasiswa</h4>
+                                                <h4 class="header">Data TA Mahasiswa</h4>
                                                 <div class="row">
                                                     <div class="col s12">
                                                             <table>
@@ -98,7 +96,13 @@
                                                                 <tr>
                                                                     <td>Nama Mahasiswa</td>
                                                                     <td>
-                                                                        {{ $mahasiswa->nama_mhs }}
+                                                                        {{ $mahasiswa->nama }}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>NPM</td>
+                                                                    <td>
+                                                                        {{ $mahasiswa->npm }}
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
@@ -108,29 +112,25 @@
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>Nama Kegiatan</td>
+                                                                    <td>Judul TA</td>
                                                                     <td>
-                                                                        {{ $mahasiswa->nama_kegiatan }}
+                                                                        {{ $mahasiswa->judul }}
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>Prestasi Juara</td>
+                                                                    <td>Nama Dosen Pembimbing 1</td>
                                                                     <td>
-                                                                        {{ $mahasiswa->prestasi_kejuaraan }}
+                                                                        {{ $mahasiswa->dospem1 }}
                                                                     </td>
                                                                 </tr>
 
                                                                 <tr>
-                                                                    <td>Tim/Individu</td>
+                                                                    <td>Nama Dosen Pembimbing 2</td>
                                                                     <td>
-                                                                        {{ $mahasiswa->kelompok }}
+                                                                        {{ $mahasiswa->dospem2 }}
                                                                     </td>
                                                                 </tr>
-                                                                <tr>
-                                                                    <td>Waktu Kegiatan</td>
-                                                                    <td>
-                                                                        {{ \Carbon\Carbon::parse($mahasiswa->waktu_kegiatan)->format('d/m/Y')}}</td>
-                                                                </tr>
+
                                                             </table>
 
                                                     </div>
@@ -143,10 +143,10 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <!--<a href="{{ route('mahasiswa.edit',$mahasiswa->id)}}" class="blue waves-effect waves-light  btn">
+                                    <a href="{{ route('ta.edit',$mahasiswa->id)}}" class="blue waves-effect waves-light  btn">
                                         <i class="material-icons left">settings_backup_restore</i>
-                                        Edit</a>-->
-                                        <form action="{{ route('prestasi.destroy', $mahasiswa->id)}}"  onsubmit="return confirm('Hapus data {{ $mahasiswa->id }} ?')" method="post">
+                                        Edit</a>
+                                        <form action="{{ route('ta.destroy', $mahasiswa->id)}}"  onsubmit="return confirm('Hapus data {{ $mahasiswa->id }} ?')" method="post">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="red btn waves-effect waves-light" type="submit" name="action" value="PUBLISH">Delete

@@ -91,11 +91,11 @@ class EventController extends Controller
 
           if($request->get('action') == 'PUBLISH'){
             return redirect()
-                  ->route('event.create')
+                  ->route('event.index')
                   ->with('status', 'event successfully saved and published');
           } else {
             return redirect()
-                  ->route('event.create')
+                  ->route('event.index')
                   ->with('status', 'event saved as draft');
           }
     }
@@ -219,11 +219,11 @@ class EventController extends Controller
 
           if($request->get('action') == 'PUBLISH'){
             return redirect()
-                  ->route('event.edit',['inf' => $info->id])
+                  ->route('event.index')
                   ->with('status', 'event successfully saved and published');
           } else {
             return redirect()
-                  ->route('event.edit',['inf' => $info->id])
+                  ->route('event.index')
                   ->with('status', 'event saved as draft');
           }
     }

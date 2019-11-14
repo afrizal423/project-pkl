@@ -63,7 +63,7 @@ class PklController extends Controller
 
         if($request->get('action') == 'PUBLISH'){
             return redirect()
-                  ->route('pkl.create')
+                  ->route('pkl.index')
                   ->with('status', 'Data Sukses ditambahkan dalam database');
           }
     }
@@ -122,7 +122,8 @@ class PklController extends Controller
 
         if($request->get('action') == 'PUBLISH'){
             return redirect()
-                  ->route('pkl.edit', ['id'=>$mhs->id])
+                  ->route('pkl.index')
+                  //->route('pkl.edit', ['id'=>$mhs->id])
                   ->with('status', 'Data Sukses diupdate dalam database');
           }
     }

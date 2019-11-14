@@ -1,4 +1,4 @@
-@extends('admin.master') @section('judul_halaman', 'Tambah data PKL mahasiswa')
+@extends('admin.master') @section('judul_halaman', 'Tambah data Tugas akhir mahasiswa')
 @section('konten')
 <section id="content">
     <!--breadcrumbs start-->
@@ -9,15 +9,15 @@
         <div class="container">
             <div class="row">
                 <div class="col s10 m6 l6">
-                    <h5 class="breadcrumbs-title">Tambah Data PKL Mahasiswa</h5>
+                    <h5 class="breadcrumbs-title">Tambah Data Tugas akhir Mahasiswa</h5>
                     <ol class="breadcrumbs">
                         <li>
                             <a href="{{url('admin')}}">Dashboard</a>
                         </li>
                         <li>
-                            <a href="{{url('admin/pkl')}}">List PKL Mahasiswa</a>
+                            <a href="{{url('admin/ta')}}">List TA Mahasiswa</a>
                         </li>
-                        <li class="active">Tambah Data PKL Mahasiswa</li>
+                        <li class="active">Tambah Data TA Mahasiswa</li>
                     </ol>
                 </div>
 
@@ -27,27 +27,28 @@
 
     <div class="divider"></div>
     <div id="responsive-table">
-        <h4 class="header">Tambah Data PKL Mahasiswa Fakultas Ilmu Komputer</h4>
+        <h4 class="header">Tambah Data Tugas akhir Mahasiswa Fakultas Ilmu Komputer</h4>
         <div class="row">
             <div class="col s12">
-                  {{-- menampilkan error validasi --}}
-                  @if (count($errors) > 0)
-                  <div class="alert alert-danger red-text">
-                      <ul>
-                          @foreach ($errors->all() as $error)
-                              <li>{{ $error }}</li>
-                          @endforeach
-                      </ul>
-                  </div>
-                  @endif
+                {{-- menampilkan error validasi --}}
+                @if (count($errors) > 0)
+                <div class="alert alert-danger red-text">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+
                     @if(session('status'))
                     <div class="alert alert-success">
                       {{session('status')}} <br>
-                      <a href="{{url('admin/pkl')}}" class="waves-effect waves-light blue btn">
+                      <a href="{{url('admin/ta')}}" class="waves-effect waves-light blue btn">
                         Kembali</a>
                     </div>
                   @endif
-                <form action="{{ route('pkl.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('ta.store') }}" method="POST" enctype="multipart/form-data">
                     {{ method_field('POST') }}
                     {{ csrf_field() }}
 
@@ -99,42 +100,42 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Judul PKL</td>
+                            <td>Judul TA</td>
                             <td>
                                 <div class="input-field">
-                                    <input id="namakeg" name="judulpkl" type="text" class="validate">
-                                    <label for="namakeg">Judul PKL</label>
-                                    @if($errors->has('judulpkl'))
+                                    <input id="namakeg" name="judul" type="text" class="validate">
+                                    <label for="namakeg">Judul TA</label>
+                                    @if($errors->has('judul'))
                                 <div class="text-danger">
-                                    {{ $errors->first('judulpkl')}}
+                                    {{ $errors->first('judul')}}
                                 </div>
                             @endif
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td>Nama Instansi</td>
+                            <td>Nama Dosen Pembimbing 1</td>
                             <td>
                                 <div class="input-field">
-                                    <input id="namakeg" name="namainstansi" type="text" class="validate">
-                                    <label for="namakeg">Nama Instansi</label>
-                                    @if($errors->has('namainstansi'))
+                                    <input id="namakeg" name="dospem1" type="text" class="validate">
+                                    <label for="namakeg">Nama Dosen Pembimbing 1</label>
+                                    @if($errors->has('dospem1'))
                                 <div class="text-danger">
-                                    {{ $errors->first('namainstansi')}}
+                                    {{ $errors->first('dospem1')}}
                                 </div>
                             @endif
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td>Alamat Instansi</td>
+                            <td>Nama Dosen Pembimbing 2</td>
                             <td>
                                 <div class="input-field">
-                                    <input id="namakeg" name="alamatinstansi" type="text" class="validate">
-                                    <label for="namakeg">Alamat Instansi</label>
-                                    @if($errors->has('alamatinstansi'))
+                                    <input id="namakeg" name="dospem2" type="text" class="validate">
+                                    <label for="namakeg">Nama Dosen Pembimbing 2</label>
+                                    @if($errors->has('dospem2'))
                                 <div class="text-danger">
-                                    {{ $errors->first('alamatinstansi')}}
+                                    {{ $errors->first('dospem2')}}
                                 </div>
                             @endif
                                 </div>

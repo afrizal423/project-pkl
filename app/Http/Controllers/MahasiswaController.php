@@ -71,7 +71,7 @@ class MahasiswaController extends Controller
 
         if($request->get('action') == 'PUBLISH'){
             return redirect()
-                  ->route('mahasiswa.create')
+                  ->route('mahasiswa.index')
                   ->with('status', 'Mahasiswa Sukses ditambahkan dalam database <button onclick="window.history.back()">Go Back</button>');
           }
     }
@@ -137,7 +137,7 @@ class MahasiswaController extends Controller
 
         if($request->get('action') == 'PUBLISH'){
             return redirect()
-                  ->route('mahasiswa.edit', ['id'=>$mhs->id])
+                  ->route('mahasiswa.index')
                   ->with('status', 'Mahasiswa Sukses diupdate dalam database');
           }
     }

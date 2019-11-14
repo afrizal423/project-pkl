@@ -53,7 +53,13 @@
                 </div>
             </div>
         </div>
-
+         <!--Responsive Table-->
+         <div class="divider"></div>
+         @if(session('status'))
+         <div class="alert alert-success">
+           {{session('status')}}
+         </div>
+       @endif
         <!--Responsive Table-->
         <div class="divider"></div>
         <div id="responsive-table">

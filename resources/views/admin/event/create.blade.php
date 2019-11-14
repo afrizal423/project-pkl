@@ -32,6 +32,16 @@
                         <h4 class="header">Tambah Event</h4>
                         <div class="row">
                             <div class="col s12">
+                                  {{-- menampilkan error validasi --}}
+                @if (count($errors) > 0)
+                <div class="alert alert-danger red-text">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
                                     @if(session('status'))
                                     <div class="alert alert-success">
                                       {{session('status')}}

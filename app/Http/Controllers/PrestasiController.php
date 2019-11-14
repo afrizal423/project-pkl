@@ -64,7 +64,7 @@ class PrestasiController extends Controller
 
         if($request->get('action') == 'PUBLISH'){
             return redirect()
-                  ->route('prestasi.create')
+                  ->route('prestasi.index')
                   ->with('status', 'Data Sukses ditambahkan dalam database');
           }
     }
