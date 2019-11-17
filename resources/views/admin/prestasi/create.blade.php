@@ -67,20 +67,23 @@
                             </td>
                         </tr>
                         <tr>
-                                <td>Jurusan</td>
-                                <td>
+                            <td>Program Studi</td>
+                            <td>
                                     <div class="input-field">
-                                        <input id="jurusan" name="jurusan" type="text" class="validate">
-                                        <label for="jurusan">Jurusan</label>
-                                        @if($errors->has('jurusan'))
-                                    <div class="text-danger">
-                                        {{ $errors->first('jurusan')}}
-                                    </div>
-                                @endif
-                                    </div>
-                                </td>
-                            </tr>
-                        <tr>
+                                            <select name="jurusan">
+                                                <option value="" disabled="disabled" selected="selected">Program Studi</option>
+                                                <option value="Teknik Informatika">Teknik Informatika</option>
+                                                <option value="Sistem Informasi">Sistem Informasi</option>
+                                            </select>
+                                            <label>Program Studi</label>
+                                            @if($errors->has('jurusan'))
+                                        <div class="text-danger">
+                                            {{ $errors->first('jurusan')}}
+                                        </div>
+                                    @endif
+                                        </div>
+                            </td>
+                        </tr>
                             <td>Nama Kegiatan</td>
                             <td>
                                 <div class="input-field">

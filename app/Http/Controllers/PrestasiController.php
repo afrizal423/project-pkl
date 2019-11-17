@@ -52,7 +52,7 @@ class PrestasiController extends Controller
             'prestasi_kejuaraan' => 'required',
             'kelompok' => 'required'
         ]);
-	    $mhs = new \App\Persma();
+	    $mhs = new \App\persma();
         $mhs->nama_mhs = $request->get('nama_mhs');
         $mhs->jurusan = $request->get('jurusan');
         $mhs->nama_kegiatan = $request->get('nama_kegiatan');

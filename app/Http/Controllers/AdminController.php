@@ -36,7 +36,7 @@ class AdminController extends Controller
         $sumjur = DB::table('tbl_mahasiswa')->select(DB::raw('count(*) as user_count, jurusan'))->groupBy('jurusan')
         ->orderBy('jurusan', 'asc')->pluck('user_count')->toArray();
         $chart->labels($aa);
-        $chart->dataset('Jumlah Mahasiswa', 'bar3d',$ab);
+        $chart->dataset('Angkatan', 'bar3d',$ab);
 
         $jurusan = new FusionChrt;
         $jur = \App\Mahasiswa::distinct()->orderBy('jurusan', 'asc')->pluck('jurusan')->toArray();
@@ -44,7 +44,7 @@ class AdminController extends Controller
         ->orderBy('jurusan', 'asc')->pluck('user_count')->toArray();
         $jurusan->labels($jur);
         $jurusan->dataset('Jurusan', 'bar3d',$sumjur);
-        $chart->title('Jumlah Mahasiswa Fakultas Ilmu Komputer', 14, '#666', true, "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif");
+        $chart->title('Jumlah Mahasiswa Fakultas Ilmu Komputer Tiap Angkatan', 14, '#666', true, "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif");
         $jurusan->title('Jumlah Mahasiswa Fakultas Ilmu Komputer Tiap Jurusan', 14, '#666', true, "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif");
 
         $aa = \App\Mahasiswa::distinct()->pluck('angkatan')->toArray();
@@ -61,8 +61,18 @@ class AdminController extends Controller
         $prestasi->dataset('Jurusan', 'bar3d',$pres);
         $prestasi->title('Prestasi Mahasiswa Fakultas Ilmu Komputer Tiap Jurusan', 14, '#666', true, "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif");
 
-        //echo json_encode($pres);
-        return view('admin.app', ['chart' => $chart, 'jurusan' => $jurusan, 'prestasi' => $prestasi]);
+        $jumlahmhs= \App\Mahasiswa::count();
+        $thnmhs = \App\Mahasiswa::where('angkatan',\Carbon\Carbon::now()->format('Y'))->count();
+        $jumlahpkl= \App\Pkl::count();
+        $thnpkl = \App\Pkl::whereYear('created_at', '=', \Carbon\Carbon::now()->format('Y'))->count();
+        $jumlahprestasi= \App\persma::count();
+        $thnprestasi= \App\persma::whereYear('waktu_kegiatan', '=', \Carbon\Carbon::now()->format('Y'))->count();
+        $jumlahalumni = \App\Mahasiswa::where('status','Alumni')->orderBy('npm', 'asc')->count();
+        $thnalumni = \App\Mahasiswa::where('status','Alumni')->whereYear('updated_at', '=', \Carbon\Carbon::now()->format('Y'))->orderBy('npm', 'asc')->count();
+        //echo json_encode($thnalumni);
+        return view('admin.app', ['chart' => $chart, 'jurusan' => $jurusan, 'prestasi' => $prestasi, 'jumlahmhs'  => $jumlahmhs,
+        'jumlahpkl' => $jumlahpkl, 'jumlahprestasi' => $jumlahprestasi, 'jumlahalumni' => $jumlahalumni,
+        'thnprestasi' => $thnprestasi, 'thnpkl' => $thnpkl, 'thnmhs' => $thnmhs, 'thnalumni' => $thnalumni]);
     }
 
     public function mahasiswa()
