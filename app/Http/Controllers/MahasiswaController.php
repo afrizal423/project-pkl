@@ -26,8 +26,86 @@ class MahasiswaController extends Controller
     public function index()
     {
         //$mhs = Mahasiswa::all();
-        $mhs = DB::table('tbl_mahasiswa')->orderBy('npm', 'asc')->paginate(10);
+        $mhs = DB::table('tbl_mahasiswa')->orderBy('npm', 'asc')->paginate(1);
         return view('admin.mahasiswa.index', ['mhs' => $mhs]);
+    }
+    function cari(Request $request)
+    {
+     if($request->ajax())
+     {
+      $sort_by = $request->get('sortby');
+      $sort_type = $request->get('sorttype');
+            $query = $request->get('query');
+            $query = str_replace(" ", "%", $query);
+      $data = DB::table('tbl_mahasiswa')
+                    ->where('npm', 'like', '%'.$query.'%')
+                    ->orWhere('nama', 'like', '%'.$query.'%')
+                    ->orWhere('jurusan', 'like', '%'.$query.'%')
+                    ->orWhere('angkatan', 'like', '%'.$query.'%')
+                    ->orWhere('asal', 'like', '%'.$query.'%')
+                    ->orWhere('status', 'like', '%'.$query.'%')
+                    ->orderBy('npm', 'asc')
+                    ->paginate(1);
+      return view('admin.mahasiswa.search', compact('mhs'))->render();
+     }
+    }
+
+    function action(Request $request)
+    {
+     if($request->ajax())
+     {
+      $output = '';
+      $query = $request->get('query');
+      if($query != '')
+      {
+       $data = DB::table('tbl_mahasiswa')
+         ->where('npm', 'like', '%'.$query.'%')
+         ->orWhere('nama', 'like', '%'.$query.'%')
+         ->orWhere('jurusan', 'like', '%'.$query.'%')
+         ->orWhere('angkatan', 'like', '%'.$query.'%')
+         ->orWhere('asal', 'like', '%'.$query.'%')
+         ->orWhere('status', 'like', '%'.$query.'%')
+         ->orderBy('npm', 'asc')
+         ->get();
+
+      }
+      else
+      {
+       $data = DB::table('mahasiswa')
+         ->orderBy('CustomerID', 'desc')
+         ->get();
+      }
+      $total_row = $data->count();
+      if($total_row > 0)
+      {
+       foreach($data as $row)
+       {
+        $output .= '
+        <tr>
+         <td>'.$row->CustomerName.'</td>
+         <td>'.$row->Address.'</td>
+         <td>'.$row->City.'</td>
+         <td>'.$row->PostalCode.'</td>
+         <td>'.$row->Country.'</td>
+        </tr>
+        ';
+       }
+      }
+      else
+      {
+       $output = '
+       <tr>
+        <td align="center" colspan="5">No Data Found</td>
+       </tr>
+       ';
+      }
+      $data = array(
+       'table_data'  => $output,
+       'total_data'  => $total_row
+      );
+
+      echo json_encode($data);
+     }
     }
 
     public function create()

@@ -12,7 +12,8 @@
         <meta
             name="keywords"
             content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
-        <title>@yield('judul_halaman')</title>
+            <meta name="csrf-token" content="{{ csrf_token() }}">
+            <title>@yield('judul_halaman')</title>
         <!-- Favicons-->
         <link rel="icon" href="<?php echo asset('images/logo.png')?>" sizes="32x32">
         <!-- Favicons-->
@@ -46,7 +47,10 @@
             <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
 
             <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
-    </head>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+
+        </head>
     <body>
         <!-- Start Page Loading -->
         <div id="loader-wrapper">
@@ -61,7 +65,8 @@
         <header id="header" class="page-topbar">
             <!-- start header nav-->
             <div class="navbar-fixed">
-                <nav class="navbar-color gradient-45deg-light-blue-cyan">
+                {{-- <nav class="navbar-color gradient-45deg-light-blue-cyan"> --}}
+                    <nav class="navbar-color orange darken-4">
                     <div class="nav-wrapper">
                         <ul class="left">
                             <li>
@@ -70,18 +75,18 @@
                                         <img
                                             src="<?php echo asset('images/logo.png')?>"
                                             alt="materialize logo">
-                                        <span class="logo-text hide-on-med-and-down">Fasilkom</span>
+                                        <span class="logo-text hide-on-med-and-down" style="">Fasilkom</span>
                                     </a>
                                 </h1>
                             </li>
                         </ul>
                         <div class="header-search-wrapper hide-on-med-and-down">
-                            <i class="material-icons">search</i>
+                            {{-- <i class="material-icons">search</i>
                             <input
                                 type="text"
                                 name="Search"
                                 class="header-search-input z-depth-2"
-                                placeholder="Search"/>
+                                placeholder="Search"/> --}}
                         </div>
                         <ul class="right hide-on-med-and-down">
                             <!--<li>
@@ -320,12 +325,12 @@
                                         <span class="nav-text">Dashboard</span>
                                     </a>
                                 </li>
-                                <li class="bold">
+                                {{-- <li class="bold">
                                     <a href="{{url('admin/user')}}" class="waves-effect waves-cyan">
                                         <i class="material-icons">account_circle</i>
                                         <span class="nav-text">User Management</span>
                                     </a>
-                                </li>
+                                </li> --}}
                                 <li class="bold">
                                     <a href="{{url('admin/mahasiswa')}}" class="waves-effect waves-cyan">
                                         <i class="material-icons">person</i>
@@ -693,7 +698,9 @@
         <!--
         //////////////////////////////////////////////////////////////////////////// -->
         <!-- START FOOTER -->
-        <footer class="page-footer gradient-45deg-light-blue-cyan">
+        {{-- <footer class="page-footer gradient-45deg-light-blue-cyan"> --}}
+            <footer class="page-footer orange darken-4">
+
             <div class="footer-copyright">
                 <div class="container">
                     <span>Copyright ©
@@ -706,7 +713,7 @@
                             target="_blank">Tim PKL</a>
                     </span>
                     <span class="right hide-on-small-only">
-                        Special Thanks to
+                        Terima kasih kepada
                         <a
                             class="grey-text text-lighten-2"
                             href="https://pixinvent.com/"
@@ -719,6 +726,51 @@
         <!-- END FOOTER -->
         <!-- ================================================ Scripts
         ================================================ -->
+        <script>
+            $(document).ready(function(){
+
+                // fetch_customer_data();
+
+                // function fetch_customer_data(query = '')
+                // {
+                // $.ajax({
+                // url:"{{ route('mahasiswa.cari') }}",
+                // method:'GET',
+                // data:{query:query},
+                // dataType:'json',
+                // success:function(data)
+                // {
+                //     $('tbody').html(data.table_data);
+                //     $('#total_records').text(data.total_data);
+                // }
+                // })
+                // }
+                function fetch_data(query)
+                {
+                    $.ajaxSetup({
+headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+                $.ajax({
+                url:"mahasiswa/cari?query="+query,
+                success:function(data)
+                {
+                    $('tbody').html('');
+                    $('tbody').html(data);
+                }
+                })
+                }
+
+                $(document).on('keyup', '#search', function(){
+                var query = $(this).val();
+                fetch_data(query);
+                });
+            });
+
+        </script>
+
+
         <script>
             var editor_config = {
                 path_absolute: "/",

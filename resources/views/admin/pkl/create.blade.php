@@ -15,7 +15,7 @@
                             <a href="{{url('admin')}}">Dashboard</a>
                         </li>
                         <li>
-                            <a href="{{url('admin/pkl')}}">List PKL Mahasiswa</a>
+                            <a href="{{url('admin/pkl')}}">Daftar PKL Mahasiswa</a>
                         </li>
                         <li class="active">Tambah Data PKL Mahasiswa</li>
                     </ol>
@@ -146,7 +146,7 @@
                             <td></td>
                             <td>
 
-                                <button class="btn waves-effect waves-light" type="submit" name="action" value="PUBLISH">Submit
+                                <button class="blue btn waves-effect waves-light" type="submit" name="action" value="PUBLISH">Simpan
                                     <i class="material-icons right">send</i>
                                 </button>
                             </tr>

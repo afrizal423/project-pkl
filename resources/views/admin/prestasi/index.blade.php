@@ -41,9 +41,9 @@
                     <div class="container">
                         <div class="col s12">
 
-                            <a href="{{url('admin/prestasi/create')}}" class="waves-effect waves-light  btn">
+                            <a href="{{url('admin/prestasi/create')}}" class="blue waves-effect waves-light  btn">
                                 <i class="material-icons left">add</i>
-                                Add Data</a>
+                                Tambah Data</a>
                             <!--<button data-target="modal1" class="btn modal-trigger">Tambah Record</button>-->
                         </div>
                     </div>
@@ -85,7 +85,7 @@
                                 <td>{{ $mahasiswa->prestasi_kejuaraan }}</td>
                                 <td>{{ $mahasiswa->kelompok }}</td>
                                 <td>
-                                    <button data-target="{{ $mahasiswa->id }}" class="btn modal-trigger">Detail</button>
+                                    <button data-target="{{ $mahasiswa->id }}" class="green btn modal-trigger">Detail</button>
                                     <!-- Modal Structure -->
                                     <div id="{{ $mahasiswa->id }}" class="modal">
                                         <div class="modal-content">
@@ -138,7 +138,7 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Exit</a>
+                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Keluar</a>
                                         </div>
                                     </div>
                                 </td>
@@ -149,7 +149,7 @@
                                         <form action="{{ route('prestasi.destroy', $mahasiswa->id)}}"  onsubmit="return confirm('Hapus data {{ $mahasiswa->id }} ?')" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="red btn waves-effect waves-light" type="submit" name="action" value="PUBLISH">Delete
+                                                <button class="red btn waves-effect waves-light" type="submit" name="action" value="PUBLISH">Hapus
                                                         <i class="material-icons right">delete</i>
                                                     </button>
                                               </form>

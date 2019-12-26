@@ -41,12 +41,12 @@
                 <div class="row">
                     <div class="container">
                         <div class="col s12">
-                            <a href="{{route('pengumuman.create')}}" class="waves-effect waves-light  btn">
+                            <a href="{{route('pengumuman.create')}}" class="blue waves-effect waves-light  btn">
                                 <i class="material-icons left">add</i>
-                                Add Pengumuman</a>
-                                <a href="{{url('admin/pengumuman/manage')}}" class="waves-effect waves-light  btn">
-                                        <i class="material-icons left">add</i>
-                                        Manage Pengumuman</a>
+                                Tambah Pengumuman</a>
+                                <a href="{{url('admin/pengumuman/manage')}}" class="teal waves-effect waves-light  btn">
+                                        <i class="material-icons left">folder</i>
+                                        Kelola Pengumuman</a>
                         </div>
                     </div>
                 </div>
@@ -87,12 +87,12 @@
                                     <div class="row">
                                         <div class="col s2">
                                             <img
-                                                src="images/avatar.jpg"
+                                                src="{{asset('storage/' . Auth::user()->avatar)}}"
                                                 alt=""
                                                 class="circle responsive-img valign profile-image">
                                         </div>
                                         <div class="col s9">
-                                            By
+                                            Penulis
                                             <a href="#">{{ $inf->username }}</a>
                                         </div>
                                     </div>

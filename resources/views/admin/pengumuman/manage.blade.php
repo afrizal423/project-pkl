@@ -23,7 +23,7 @@
                         <li>
                             <a href="{{url('Pengumuman')}}">Pengumuman</a>
                         </li>
-                        <li class="active">Manage</li>
+                        <li class="active">Kelola</li>
                     </ol>
                 </div>
 
@@ -36,10 +36,10 @@
         <div class="section">
             <div class="row">
                 <div class="col s12">
-                    <div class="input-field col s12">
+                    {{-- <div class="input-field col s12">
                         <i class="material-icons prefix">search</i>
                         <input type="text" name="Search" placeholder="Search"/>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="row">
                     <div class="container">
@@ -47,9 +47,9 @@
 
                             <a
                                 href="{{route('pengumuman.create')}}"
-                                class="waves-effect waves-light  btn">
+                                class="blue waves-effect waves-light  btn">
                                 <i class="material-icons left">add</i>
-                                Add Data</a>
+                                Tambah Data</a>
 
                         </div>
                     </div>
@@ -60,16 +60,16 @@
         <!--Responsive Table-->
         <div class="divider"></div>
         <div id="responsive-table">
-            <h4 class="header">Data Mahasiswa Fakultas Ilmu Komputer</h4>
+            <h4 class="header">Data Pengumuman Fakultas Ilmu Komputer</h4>
             <div class="row">
                 <div class="col s12">
                     <table class="responsive-table">
                         <thead>
                             <tr>
-                                <th data-field="judul">judul</th>
-                                <th data-field="kategori">kategori</th>
-                                <th data-field="status">status</th>
-                                <th data-field="action">Action</th>
+                                <th data-field="judul">Judul</th>
+                                <th data-field="kategori">Kategori</th>
+                                <th data-field="status">Status</th>
+                                <th data-field="action">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -86,7 +86,7 @@
                                     <a
                                         href="{{ route('pengumuman.edit',$inf->id)}}"
                                         class="blue waves-effect waves-light  btn">
-                                        <i class="material-icons left">settings_backup_restore</i>
+                                        {{-- <i class="material-icons left">settings_backup_restore</i> --}}
                                         Edit</a>
                                     <form
                                         action="{{ route('pengumuman.destroy', $inf->id)}}"

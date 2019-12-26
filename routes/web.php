@@ -31,6 +31,9 @@ Route::group(['middleware' => ['web']], function () {
     //Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/admin', 'AdminController@index')->name('admin');
     Route::get('admin/mahasiswa/lihat', 'MahasiswaController@lihat');
+    Route::get('admin/mahasiswa/nyoba', 'MahasiswaController@nyoba');
+    Route::get('admin/mahasiswa/cr', 'MahasiswaController@cr')->name('mahasiswa.cr');
+    Route::get('admin/mahasiswa/cari', 'MahasiswaController@fetch_data')->name('mahasiswa.cari');
     Route::resource("admin/mahasiswa", "MahasiswaController");
 
     Route::get("admin/pengumuman/manage", "PengumumanController@manage");

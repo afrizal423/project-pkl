@@ -49,16 +49,16 @@
         <div class="col s12 m3 l3">
             <div class="card">
                 <div style="margin:10px">
-                <b>Author</b>: {{$inf->nama}} <br>
-                <b>Created at</b>: {{ \Carbon\Carbon::parse($inf->created_at)->format('j F, Y h:i:s A')}} <br>
-                <b>Update at</b>: {{ \Carbon\Carbon::parse($inf->updated_at)->format('j F, Y h:i:s A')}} <br>
+                <b>Penulis</b>: {{$inf->nama}} <br>
+                <b>Dibuat pada</b>: {{ \Carbon\Carbon::parse($inf->created_at)->format('j F, Y h:i:s A')}} <br>
+                <b>Diubah pada</b>: {{ \Carbon\Carbon::parse($inf->updated_at)->format('j F, Y h:i:s A')}} <br>
                 <a href="{{ route('event.edit',$inf->id)}}" class="blue waves-effect waves-light  btn">
                         <i class="material-icons left">settings_backup_restore</i>
-                        Edit</a>
+                        Ubah</a>
                         <form action="{{ route('event.destroy', $inf->id)}}"  onsubmit="return confirm('Hapus pengumuman {{ $inf->judul }} ?')" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button class="red btn waves-effect waves-light" type="submit" name="action" value="PUBLISH">Delete
+                                <button class="red btn waves-effect waves-light" type="submit" name="action" value="PUBLISH">Hapus
                                         <i class="material-icons right">delete</i>
                                     </button>
                               </form>

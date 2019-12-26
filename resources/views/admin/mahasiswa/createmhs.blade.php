@@ -197,7 +197,7 @@
                             <td></td>
                             <td>
 
-                                <button class="btn waves-effect waves-light" type="submit" name="action" value="PUBLISH">Submit
+                                <button class="blue btn waves-effect waves-light" type="submit" name="action" value="PUBLISH">Simpan
                                     <i class="material-icons right">send</i>
                                 </button>
                             </tr>

@@ -15,7 +15,7 @@
                             <a href="{{url('admin')}}">Dashboard</a>
                         </li>
                         <li>
-                            <a href="{{url('admin/pengumuman')}}">List Pengumuman</a>
+                            <a href="{{url('admin/pengumuman')}}">Daftar Pengumuman</a>
                         </li>
                         <li class="active">Tambah Pengumuman</li>
                     </ol>
@@ -108,7 +108,7 @@
                                             <td>
                                                 <div class="file-field input-field">
                                                     <div class="btn">
-                                                      <span>File</span>
+                                                      <span>berkas</span>
                                                       <input type="file" name="gambar">
                                                     </div>
                                                     <div class="file-path-wrapper">
@@ -126,10 +126,10 @@
                                         <tr>
                                             <td></td>
                                             <td>
-                                                <button class="blue btn waves-effect waves-light" type="submit" name="action" value="DRAFT">Draft
+                                                <button class="amber darken-3 btn waves-effect waves-light" type="submit" name="action" value="DRAFT">Konsep
                                                     <i class="material-icons right">assignment</i>
                                                 </button>
-                                                <button class="btn waves-effect waves-light" type="submit" name="action" value="PUBLISH">Publish
+                                                <button class="blue btn waves-effect waves-light" type="submit" name="action" value="PUBLISH">Publikasi
                                                     <i class="material-icons right">send</i>
                                                 </button>
                                             </tr>
@@ -139,7 +139,7 @@
                             </div>
                         </div>
         </div>
-        <div class=" col s12 m3 l3">sssssss</div>
+        <div class=" col s12 m3 l3"><!--sssssss--></div>
     </div>
 
     </section>

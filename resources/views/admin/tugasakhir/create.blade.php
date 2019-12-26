@@ -15,7 +15,7 @@
                             <a href="{{url('admin')}}">Dashboard</a>
                         </li>
                         <li>
-                            <a href="{{url('admin/ta')}}">List TA Mahasiswa</a>
+                            <a href="{{url('admin/ta')}}">Daftar TA Mahasiswa</a>
                         </li>
                         <li class="active">Tambah Data TA Mahasiswa</li>
                     </ol>
@@ -147,7 +147,7 @@
                             <td></td>
                             <td>
 
-                                <button class="btn waves-effect waves-light" type="submit" name="action" value="PUBLISH">Submit
+                                <button class="blue btn waves-effect waves-light" type="submit" name="action" value="PUBLISH">Simpan
                                     <i class="material-icons right">send</i>
                                 </button>
                             </tr>

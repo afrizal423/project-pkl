@@ -9,15 +9,15 @@
         <div class="container">
             <div class="row">
                 <div class="col s10 m6 l6">
-                    <h5 class="breadcrumbs-title">Edit Data Mahasiswa</h5>
+                    <h5 class="breadcrumbs-title">Ubah Data Mahasiswa</h5>
                     <ol class="breadcrumbs">
                         <li>
                             <a href="{{url('admin')}}">Dashboard</a>
                         </li>
                         <li>
-                            <a href="{{url('admin/mahasiswa')}}">List Mahasiswa</a>
+                            <a href="{{url('admin/mahasiswa')}}">Daftar Mahasiswa</a>
                         </li>
-                        <li class="active">Edit Data Mahasiswa</li>
+                        <li class="active">Ubah Data Mahasiswa</li>
                     </ol>
                 </div>
 
@@ -27,7 +27,7 @@
 
     <div class="divider"></div>
     <div id="responsive-table">
-        <h4 class="header">Edit Data Mahasiswa Fakultas Ilmu Komputer</h4>
+        <h4 class="header">Ubah Data Mahasiswa Fakultas Ilmu Komputer</h4>
         <div class="row">
             <div class="col s12">
                   {{-- menampilkan error validasi --}}
@@ -187,7 +187,7 @@
                             <td></td>
                             <td>
 
-                                <button class="btn waves-effect waves-light" type="submit" name="action" value="PUBLISH">Submit
+                                <button class="blue btn waves-effect waves-light" type="submit" name="action" value="PUBLISH">Simpan
                                     <i class="material-icons right">send</i>
                                 </button>
                             </tr>

@@ -9,9 +9,10 @@
         <div id="card-widgets">
             <div class="row ">
                 <div class="col s12 m12 l12 center">
-                    <h5>Welcome
+                    <h5>Selamat datang di halaman panel admin. Semoga harimu menyenangkan!😊
+                       <!-- Welcome
                         {{ Auth::user()->name }}
-                        to the admin panel page. Have a nice day Sir!😊.</h5>
+                        to the admin panel page. Have a nice day Sir!😊.--></h5>
                 </div>
             </div>
         </div>

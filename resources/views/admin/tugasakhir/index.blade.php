@@ -41,9 +41,9 @@
                     <div class="container">
                         <div class="col s12">
 
-                            <a href="{{url('admin/ta/create')}}" class="waves-effect waves-light  btn">
+                            <a href="{{url('admin/ta/create')}}" class="blue waves-effect waves-light  btn">
                                 <i class="material-icons left">add</i>
-                                Add Data</a>
+                                Tambah Data</a>
                             <!--<button data-target="modal1" class="btn modal-trigger">Tambah Record</button>-->
                         </div>
                     </div>
@@ -70,8 +70,8 @@
                                 <th data-field="id">NPM Mahasiswa</th>
                                 <th data-field="name">Jurusan</th>
                                 <th data-field="email">Judul</th>
-                                <th data-field="age">View</th>
-                                <th data-field="action">Action</th>
+                                <th data-field="age">Lihat</th>
+                                <th data-field="action">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -83,7 +83,7 @@
                                 <td>{{ $mahasiswa->jurusan }}</td>
                                 <td>{{ $mahasiswa->judul }}</td>
                                 <td>
-                                    <button data-target="{{ $mahasiswa->id }}" class="btn modal-trigger">Detail</button>
+                                    <button data-target="{{ $mahasiswa->id }}" class="green btn modal-trigger">Detail</button>
                                     <!-- Modal Structure -->
                                     <div id="{{ $mahasiswa->id }}" class="modal">
                                         <div class="modal-content">
@@ -138,18 +138,18 @@
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Exit</a>
+                                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Keluar</a>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <a href="{{ route('ta.edit',$mahasiswa->id)}}" class="blue waves-effect waves-light  btn">
+                                    <a href="{{ route('ta.edit',$mahasiswa->id)}}" class="yellow darken-2 waves-effect waves-light  btn">
                                         <i class="material-icons left">settings_backup_restore</i>
-                                        Edit</a>
+                                        Ubah</a>
                                         <form action="{{ route('ta.destroy', $mahasiswa->id)}}"  onsubmit="return confirm('Hapus data {{ $mahasiswa->id }} ?')" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="red btn waves-effect waves-light" type="submit" name="action" value="PUBLISH">Delete
+                                                <button class="red btn waves-effect waves-light" type="submit" name="action" value="PUBLISH">Hapus
                                                         <i class="material-icons right">delete</i>
                                                     </button>
                                               </form>

@@ -23,7 +23,7 @@
                         <li>
                             <a href="{{url('admin/event')}}">Event</a>
                         </li>
-                        <li class="active">Manage</li>
+                        <li class="active">Kelola</li>
                     </ol>
                 </div>
 
@@ -36,10 +36,10 @@
         <div class="section">
             <div class="row">
                 <div class="col s12">
-                    <div class="input-field col s12">
+                    {{-- <div class="input-field col s12">
                         <i class="material-icons prefix">search</i>
                         <input type="text" name="Search" placeholder="Search"/>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="row">
                     <div class="container">
@@ -47,9 +47,9 @@
 
                             <a
                                 href="{{route('event.create')}}"
-                                class="waves-effect waves-light  btn">
+                                class="blue waves-effect waves-light  btn">
                                 <i class="material-icons left">add</i>
-                                Add Data</a>
+                                Tambah Data</a>
 
                         </div>
                     </div>
@@ -66,10 +66,10 @@
                     <table class="responsive-table">
                         <thead>
                             <tr>
-                                <th data-field="judul">judul</th>
-                                <th data-field="kategori">kategori</th>
-                                <th data-field="status">status</th>
-                                <th data-field="action">Action</th>
+                                <th data-field="judul">Judul</th>
+                                <th data-field="kategori">Kategori</th>
+                                <th data-field="status">Status</th>
+                                <th data-field="action">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -87,7 +87,7 @@
                                         href="{{ route('event.edit',$inf->id)}}"
                                         class="blue waves-effect waves-light  btn">
                                         <i class="material-icons left">settings_backup_restore</i>
-                                        Edit</a>
+                                        Ubah</a>
                                     <form
                                         action="{{ route('event.destroy', $inf->id)}}"
                                         onsubmit="return confirm('Hapus data {{ $inf->judul }} ?')"
@@ -97,7 +97,7 @@
                                             class="red btn waves-effect waves-light"
                                             type="submit"
                                             name="action"
-                                            value="PUBLISH">Delete
+                                            value="PUBLISH">Hapus
                                             <i class="material-icons right">delete</i>
                                         </button>
                                     </form>

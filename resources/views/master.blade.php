@@ -316,12 +316,12 @@
                                         <span class="nav-text">Dashboard</span>
                                     </a>
                                 </li>
-                                <li class="bold">
+                                <!-- <li class="bold">
                                     <a href="admin.html" class="waves-effect waves-cyan">
                                         <i class="material-icons">account_circle</i>
                                         <span class="nav-text">User Management</span>
                                     </a>
-                                </li>
+                                </li> -->
                                 <li class="bold">
                                     <a href="admin.html" class="waves-effect waves-cyan">
                                         <i class="material-icons">person</i>

@@ -9,7 +9,7 @@
         <div class="container">
             <div class="row">
                 <div class="col s10 m6 l6">
-                    <h5 class="breadcrumbs-title">Tambah Data Mahasiswa</h5>
+                    <h5 class="breadcrumbs-title">Ubah pengumuman</h5>
                     <ol class="breadcrumbs">
                         <li>
                             <a href="{{url('admin')}}">Dashboard</a>
@@ -17,7 +17,7 @@
                         <li>
                             <a href="{{url('admin/pengumuman')}}">Pengumuman</a>
                         </li>
-                        <li class="active">Edit</li>
+                        <li class="active">Ubah</li>
                         <li class="active">{{$inf->judul}}</li>
                     </ol>
                 </div>
@@ -28,7 +28,7 @@
 
     <div class="divider"></div>
     <div id="responsive-table">
-        <h4 class="header">Edit pengumuman</h4>
+        <h4 class="header">Ubah pengumuman</h4>
         <div class="row">
             <div class="col s12">
                   {{-- menampilkan error validasi --}}
@@ -113,13 +113,13 @@
                         <tr>
                                 <td>Foto Banner</td>
                                 <td>
-                                        <small class="text-muted">Current cover</small><br>
+                                        <small class="text-muted">Cover saat ini</small><br>
                                         @if($inf->gambar)
                                           <img src="{{asset('storage/' . $inf->gambar)}}" width="96px"/>
                                         @endif
                                     <div class="file-field input-field">
                                         <div class="btn">
-                                            <span>File</span>
+                                            <span>berkas</span>
                                             <input type="file" name="gambar">
                                         </div>
                                         <div class="file-path-wrapper">
@@ -139,17 +139,17 @@
                             <td></td>
                             <td>
                                 <button
-                                    class="blue btn waves-effect waves-light"
+                                    class="amber darken-3 btn waves-effect waves-light"
                                     type="submit"
                                     name="action"
-                                    value="DRAFT">Draft
+                                    value="DRAFT">Konsep
                                     <i class="material-icons right">assignment</i>
                                 </button>
                                 <button
-                                    class="btn waves-effect waves-light"
+                                    class="blue btn waves-effect waves-light"
                                     type="submit"
                                     name="action"
-                                    value="PUBLISH">Publish
+                                    value="PUBLISH">Publikasi
                                     <i class="material-icons right">send</i>
                                 </button>
                             </tr>

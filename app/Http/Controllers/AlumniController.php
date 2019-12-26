@@ -17,7 +17,7 @@ class AlumniController extends Controller
     {
         //
         $mhs = DB::table('tbl_mahasiswa')->where('status','Alumni')->orderBy('npm', 'asc')->paginate(10);
-        return view('admin.mahasiswa.index', ['mhs' => $mhs]);
+        return view('admin.alumni.index', ['mhs' => $mhs]);
     }
 
     /**
