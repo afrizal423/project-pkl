@@ -337,12 +337,24 @@
                                         <span class="nav-text">Data Mahasiswa</span>
                                     </a>
                                 </li>
-                                <li class="bold">
+                                <li class="bold"><a class="collapsible-header waves-effect waves-cyan">
+                                    <i class="material-icons">announcement</i>
+                                    Informasi</a>
+                                    <div class="collapsible-body">
+                                        <ul>
+                                            <li><a href="{{url('admin/pengumuman')}}">Pengumuman</a>
+                                            </li>
+                                            <li><a href="{{url('admin/berita')}}">Berita</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                {{-- <li class="bold">
                                     <a href="{{url('admin/pengumuman')}}" class="waves-effect waves-cyan">
                                         <i class="material-icons">announcement</i>
                                         <span class="nav-text">Pengumuman</span>
                                     </a>
-                                </li>
+                                </li> --}}
                                 <li class="bold">
                                     <a href="{{url('admin/event')}}" class="waves-effect waves-cyan">
                                         <i class="material-icons">cake</i>

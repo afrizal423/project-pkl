@@ -41,6 +41,9 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get("admin/pengumuman/manage", "PengumumanController@manage");
     Route::resource("admin/pengumuman", "PengumumanController");
+    Route::get('admin/berita/manage', 'BeritaController@manage');
+    Route::resource("admin/berita", "BeritaController");
+
 
     Route::get('admin/event/manage', 'EventController@manage');
     Route::resource("admin/event", "EventController");

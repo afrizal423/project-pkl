@@ -8,8 +8,7 @@ use Image;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
-
-class PengumumanController extends Controller
+class BeritaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,78 +17,16 @@ class PengumumanController extends Controller
      */
     public function index()
     {
-        //
-        $info = DB::table('tbl_pengumuman')->join('users', 'tbl_pengumuman.username', '=', 'users.username')->where('tbl_pengumuman.username', \Auth::user()->username)->where('tbl_pengumuman.kategori','!=','Berita' )->orderBy('tbl_pengumuman.id', 'asc')->paginate(10);
-        return view('admin.pengumuman.index', ['info' => $info]);
-        //echo $info;
+        $info = DB::table('tbl_pengumuman')->join('users', 'tbl_pengumuman.username', '=', 'users.username')->where('tbl_pengumuman.kategori','Berita' )->where('tbl_pengumuman.username', \Auth::user()->username)->orderBy('tbl_pengumuman.id', 'asc')->paginate(10);
+        return view('admin.berita.index', ['info' => $info]);
     }
     public function manage()
     {
         //
-        $info = DB::table('tbl_pengumuman')->join('users', 'tbl_pengumuman.username', '=', 'users.username')->where('tbl_pengumuman.username', \Auth::user()->username)->where('tbl_pengumuman.kategori','!=','Berita' )->orderBy('tbl_pengumuman.id', 'asc')->paginate(10);
-        return view('admin.pengumuman.manage', ['info' => $info]);
+        $info = DB::table('tbl_pengumuman')->join('users', 'tbl_pengumuman.username', '=', 'users.username')->where('tbl_pengumuman.kategori','Berita' )->where('tbl_pengumuman.username', \Auth::user()->username)->orderBy('tbl_pengumuman.id', 'asc')->paginate(10);
+        return view('admin.berita.manage', ['info' => $info]);
         //echo $info;
     }
-
-    public function search(Request $request)
-    {
-    if($request->ajax())
-    {
-        $output="";
-        //$products=DB::table('tbl_mahasiswa')->where('nama','LIKE','%'.$request->search."%")->get();
-        $info = DB::table('tbl_pengumuman')
-                    ->where('judul', 'like', '%'.$request->search.'%')
-                    ->orWhere('slug', 'like', '%'.$request->search.'%')
-                    ->orWhere('kategori', 'like', '%'.$request->search.'%')
-                    ->orderBy('id', 'asc')
-                    ->get();
-        if($info)
-        {
-             return view('admin.pengumuman.car1', compact('info'))->render();
-        // foreach ($mhs as $key => $product) {
-        // $output.='<tr>'.
-        // '<td>'.$product->npm.'</td>'.
-        // '<td>'.$product->nama.'</td>'.
-        // '<td>'.$product->jurusan.'</td>'.
-        // '<td>'.$product->asal.'</td>'.
-        // '</tr>';
-        // }
-        return Response($output);
-        } else {
-            echo "<script>console.log('hahal');</script>";
-        }
-    }
-    }
-    public function search2(Request $request)
-    {
-    if($request->ajax())
-    {
-        $output="";
-        //$products=DB::table('tbl_mahasiswa')->where('nama','LIKE','%'.$request->search."%")->get();
-        $info = DB::table('tbl_pengumuman')
-                    ->where('judul', 'like', '%'.$request->search.'%')
-                    ->orWhere('slug', 'like', '%'.$request->search.'%')
-                    ->orWhere('kategori', 'like', '%'.$request->search.'%')
-                    ->orderBy('id', 'asc')
-                    ->get();
-        if($info)
-        {
-             return view('admin.pengumuman.car2', compact('info'))->render();
-        // foreach ($mhs as $key => $product) {
-        // $output.='<tr>'.
-        // '<td>'.$product->npm.'</td>'.
-        // '<td>'.$product->nama.'</td>'.
-        // '<td>'.$product->jurusan.'</td>'.
-        // '<td>'.$product->asal.'</td>'.
-        // '</tr>';
-        // }
-        return Response($output);
-        } else {
-            echo "<script>console.log('hahal');</script>";
-        }
-    }
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -97,8 +34,7 @@ class PengumumanController extends Controller
      */
     public function create()
     {
-        //
-        return view('admin.pengumuman.create');
+        return view('admin.berita.create');
     }
 
     /**
@@ -122,7 +58,7 @@ class PengumumanController extends Controller
         $info->slug = str_slug($request->get('judul'));
         $gambar = $request->file('gambar');
         if($gambar){
-            $cover_path = $gambar->store('info-covers', 'public');
+            $cover_path = $gambar->store('berita-covers', 'public');
 
             $info->gambar = $cover_path;
           }
@@ -151,12 +87,12 @@ class PengumumanController extends Controller
 
           if($request->get('action') == 'PUBLISH'){
             return redirect()
-                  ->route('pengumuman.index')
-                  ->with('status', 'pengumuman successfully saved and published');
+                  ->route('berita.index')
+                  ->with('status', 'Berita sukses disimpan dan dipublikasi');
           } else {
             return redirect()
-                  ->route('pengumuman.index')
-                  ->with('status', 'pengumuman saved as draft');
+                  ->route('berita.index')
+                  ->with('status', 'Berita sukses disimpan sebagai konsep');
           }
     }
 
@@ -168,23 +104,22 @@ class PengumumanController extends Controller
      */
     public function show($id)
     {
-        //
-        $info = DB::table('tbl_pengumuman')->where('slug', $id)->first();
+         //
+         $info = DB::table('tbl_pengumuman')->where('slug', $id)->first();
 
-        if ($info->username != \Auth::user()->username) {
-            abort(403, 'Anda tidak memiliki cukup hak akses kepemilikan');
-        } elseif ($info->username == \Auth::user()->username) {
-            $info = DB::table('tbl_pengumuman')
-            ->join('users', 'tbl_pengumuman.username', '=', 'users.username')
-            ->join('detail_users', 'tbl_pengumuman.username', '=', 'detail_users.username')
-            ->where('slug', $id)->where('tbl_pengumuman.username', \Auth::user()->username)
-            ->select('tbl_pengumuman.*', 'detail_users.nama')->first();
-            //echo json_encode($info);
-            return view('admin.pengumuman.show', ['inf' => $info]);
-        } else {
-            abort(404, 'eror');
-        }
-
+         if ($info->username != \Auth::user()->username) {
+             abort(403, 'Anda tidak memiliki cukup hak akses kepemilikan');
+         } elseif ($info->username == \Auth::user()->username) {
+             $info = DB::table('tbl_pengumuman')
+             ->join('users', 'tbl_pengumuman.username', '=', 'users.username')
+             ->join('detail_users', 'tbl_pengumuman.username', '=', 'detail_users.username')
+             ->where('slug', $id)->where('tbl_pengumuman.username', \Auth::user()->username)
+             ->select('tbl_pengumuman.*', 'detail_users.nama')->first();
+             //echo json_encode($info);
+             return view('admin.berita.show', ['inf' => $info]);
+         } else {
+             abort(404, 'eror');
+         }
 
 
 
@@ -198,12 +133,11 @@ class PengumumanController extends Controller
      */
     public function edit($id)
     {
-        //
-        $inf =  DB::table('tbl_pengumuman')->where('tbl_pengumuman.id', $id)->where('tbl_pengumuman.kategori','!=','Berita' )->first();
+        $inf =  DB::table('tbl_pengumuman')->where('tbl_pengumuman.id', $id)->where('tbl_pengumuman.kategori','Berita' )->first();
         //echo $inf;
         if ($inf) {
             # code...
-            return view('admin.pengumuman.edit', ['inf' => $inf]);
+            return view('admin.berita.edit', ['inf' => $inf]);
 
         } else {
             abort(403, 'Anda tidak memiliki cukup hak akses kepemilikan');
@@ -219,7 +153,6 @@ class PengumumanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
 
         $this->validate($request,[
     		'judul' => 'required',
@@ -274,12 +207,12 @@ class PengumumanController extends Controller
           if($request->get('action') == 'PUBLISH'){
             return redirect()
                   //->route('pengumuman.edit',['inf' => $info->id])
-                  ->route('pengumuman.index')
-                  ->with('status', 'pengumuman successfully saved and published');
+                  ->route('berita.index')
+                  ->with('status', 'berita successfully saved and published');
           } else {
             return redirect()
-                  ->route('pengumuman.index')
-                  ->with('status', 'pengumuman saved as draft');
+                  ->route('berita.index')
+                  ->with('status', 'berita saved as draft');
           }
     }
 
@@ -291,11 +224,10 @@ class PengumumanController extends Controller
      */
     public function destroy($id_pengumuman)
     {
-        //
         $mhs = Pengumuman::findOrFail($id_pengumuman);
         \Storage::delete('public/'. $mhs->gambar);
         $mhs->delete();
 
-        return redirect('/admin/pengumuman')->with('status', 'pengumuman is successfully deleted');
+        return redirect('/admin/berita')->with('status', 'data berita sukses dihapus');
     }
 }
