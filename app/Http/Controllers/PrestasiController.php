@@ -23,7 +23,37 @@ class PrestasiController extends Controller
         $mhs = DB::table('tbl_prestasi')->orderBy('id', 'asc')->paginate(10);
         return view('admin.prestasi.index', ['mhs' => $mhs]);
     }
-
+    public function search(Request $request)
+    {
+    if($request->ajax())
+    {
+        $output="";
+        //$products=DB::table('tbl_mahasiswa')->where('nama','LIKE','%'.$request->search."%")->get();
+        $mhs = DB::table('tbl_prestasi')
+                    ->where('nama_kegiatan', 'like', '%'.$request->search.'%')
+                    ->orWhere('nama_mhs', 'like', '%'.$request->search.'%')
+                    ->orWhere('jurusan', 'like', '%'.$request->search.'%')
+                    ->orWhere('prestasi_kejuaraan', 'like', '%'.$request->search.'%')
+                    ->orWhere('kelompok', 'like', '%'.$request->search.'%')
+                    ->orderBy('id', 'asc')
+                    ->get();
+        if($mhs)
+        {
+             return view('admin.prestasi.search', compact('mhs'))->render();
+        // foreach ($mhs as $key => $product) {
+        // $output.='<tr>'.
+        // '<td>'.$product->npm.'</td>'.
+        // '<td>'.$product->nama.'</td>'.
+        // '<td>'.$product->jurusan.'</td>'.
+        // '<td>'.$product->asal.'</td>'.
+        // '</tr>';
+        // }
+        return Response($output);
+        } else {
+            echo "<script>console.log('hahal');</script>";
+        }
+    }
+    }
     /**
      * Show the form for creating a new resource.
      *

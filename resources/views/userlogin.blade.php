@@ -94,7 +94,7 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
-                <button type="submit" class="blue darken-1 btn btn-primary" style="width:100%">
+                <button type="submit" class=" darken-1 btn btn-primary" style="width:100%">
                         {{ __('Login') }}
                     </button>
           </div>

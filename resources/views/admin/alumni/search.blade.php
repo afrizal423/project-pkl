@@ -1,4 +1,3 @@
-Yang kamu cari
 @foreach ($mhs as $mahasiswa)
 
 <tr>
@@ -73,11 +72,11 @@ Yang kamu cari
     <td>
         <a href="{{ route('mahasiswa.edit',$mahasiswa->id)}}" class="yellow darken-2 waves-effect waves-light  btn">
             <i class="material-icons left">settings_backup_restore</i>
-            Ubah</a>
-            <form action="{{ route('mahasiswa.destroy', $mahasiswa->id)}}"  onsubmit="return confirm('Hapus data {{ $mahasiswa->nama }} ?')" method="post">
+            Edit</a>
+            <form action="{{ route('alumni.destroy', $mahasiswa->id)}}"  onsubmit="return confirm('Hapus data {{ $mahasiswa->nama }} ?')" method="post">
                     @csrf
                     @method('DELETE')
-                    <button class="red btn waves-effect waves-light" type="submit" name="action" value="PUBLISH">Hapus
+                    <button class="red btn waves-effect waves-light" type="submit" name="action" value="PUBLISH">Delete
                             <i class="material-icons right">delete</i>
                         </button>
                   </form>
@@ -85,6 +84,5 @@ Yang kamu cari
             <i class="material-icons left">delete</i>
             Delete</a>-->
     </td>
-
 </tr>
 @endforeach

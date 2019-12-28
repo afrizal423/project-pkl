@@ -31,6 +31,65 @@ class PengumumanController extends Controller
         //echo $info;
     }
 
+    public function search(Request $request)
+    {
+    if($request->ajax())
+    {
+        $output="";
+        //$products=DB::table('tbl_mahasiswa')->where('nama','LIKE','%'.$request->search."%")->get();
+        $info = DB::table('tbl_pengumuman')
+                    ->where('judul', 'like', '%'.$request->search.'%')
+                    ->orWhere('slug', 'like', '%'.$request->search.'%')
+                    ->orWhere('kategori', 'like', '%'.$request->search.'%')
+                    ->orderBy('id', 'asc')
+                    ->get();
+        if($info)
+        {
+             return view('admin.pengumuman.car1', compact('info'))->render();
+        // foreach ($mhs as $key => $product) {
+        // $output.='<tr>'.
+        // '<td>'.$product->npm.'</td>'.
+        // '<td>'.$product->nama.'</td>'.
+        // '<td>'.$product->jurusan.'</td>'.
+        // '<td>'.$product->asal.'</td>'.
+        // '</tr>';
+        // }
+        return Response($output);
+        } else {
+            echo "<script>console.log('hahal');</script>";
+        }
+    }
+    }
+    public function search2(Request $request)
+    {
+    if($request->ajax())
+    {
+        $output="";
+        //$products=DB::table('tbl_mahasiswa')->where('nama','LIKE','%'.$request->search."%")->get();
+        $info = DB::table('tbl_pengumuman')
+                    ->where('judul', 'like', '%'.$request->search.'%')
+                    ->orWhere('slug', 'like', '%'.$request->search.'%')
+                    ->orWhere('kategori', 'like', '%'.$request->search.'%')
+                    ->orderBy('id', 'asc')
+                    ->get();
+        if($info)
+        {
+             return view('admin.pengumuman.car2', compact('info'))->render();
+        // foreach ($mhs as $key => $product) {
+        // $output.='<tr>'.
+        // '<td>'.$product->npm.'</td>'.
+        // '<td>'.$product->nama.'</td>'.
+        // '<td>'.$product->jurusan.'</td>'.
+        // '<td>'.$product->asal.'</td>'.
+        // '</tr>';
+        // }
+        return Response($output);
+        } else {
+            echo "<script>console.log('hahal');</script>";
+        }
+    }
+    }
+
     /**
      * Show the form for creating a new resource.
      *

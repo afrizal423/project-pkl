@@ -20,7 +20,38 @@ class TugasakhirController extends Controller
         $mhs = DB::table('data_tugasakhir')->orderBy('id', 'asc')->paginate(10);
         return view('admin.tugasakhir.index', ['mhs' => $mhs]);
     }
-
+    public function search(Request $request)
+    {
+    if($request->ajax())
+    {
+        $output="";
+        //$products=DB::table('tbl_mahasiswa')->where('nama','LIKE','%'.$request->search."%")->get();
+        $mhs = DB::table('data_tugasakhir')
+                    ->where('npm', 'like', '%'.$request->search.'%')
+                    ->orWhere('nama', 'like', '%'.$request->search.'%')
+                    ->orWhere('jurusan', 'like', '%'.$request->search.'%')
+                    ->orWhere('judul', 'like', '%'.$request->search.'%')
+                    ->orWhere('dospem1', 'like', '%'.$request->search.'%')
+                    ->orWhere('dospem2', 'like', '%'.$request->search.'%')
+                    ->orderBy('npm', 'asc')
+                    ->get();
+        if($mhs)
+        {
+             return view('admin.tugasakhir.search', compact('mhs'))->render();
+        // foreach ($mhs as $key => $product) {
+        // $output.='<tr>'.
+        // '<td>'.$product->npm.'</td>'.
+        // '<td>'.$product->nama.'</td>'.
+        // '<td>'.$product->jurusan.'</td>'.
+        // '<td>'.$product->asal.'</td>'.
+        // '</tr>';
+        // }
+        return Response($output);
+        } else {
+            echo "<script>console.log('hahal');</script>";
+        }
+    }
+    }
     /**
      * Show the form for creating a new resource.
      *

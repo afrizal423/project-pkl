@@ -12,8 +12,8 @@
         <meta
             name="keywords"
             content="materialize, admin template, dashboard template, flat admin template, responsive admin template,">
-            <meta name="csrf-token" content="{{ csrf_token() }}">
-            <title>@yield('judul_halaman')</title>
+            <meta name="_token" content="{{ csrf_token() }}">
+                        <title>@yield('judul_halaman')</title>
         <!-- Favicons-->
         <link rel="icon" href="<?php echo asset('images/logo.png')?>" sizes="32x32">
         <!-- Favicons-->
@@ -726,7 +726,140 @@
         <!-- END FOOTER -->
         <!-- ================================================ Scripts
         ================================================ -->
-        <script>
+        <script type="text/javascript">
+            $('#search').on('keyup', function () {
+                 var value = $(this).val();
+                if (value != '') {
+                    $('tbody').html('');
+                    $.ajax({
+                    type: 'get',
+                    url: "{{ route('mahasiswa.sc') }}",
+                    data: {
+                        'search': value
+                    },
+                    success: function (data) {
+                        $('tbody').html(data);
+                    }
+                });
+                }
+
+            })
+            $('#cari').on('keyup', function () {
+                 var value = $(this).val();
+                if (value != '') {
+                    $('#hasil').html('');
+                    $.ajax({
+                    type: 'get',
+                    url: "{{ route('pengumuman.sc') }}",
+                    data: {
+                        'search': value
+                    },
+                    success: function (data) {
+                        $('#hasil').html(data);
+                    }
+                });
+                } else {
+                    $('#hasil').html('');
+                }
+
+            })
+            $('#caripeng').on('keyup', function () {
+                 var value = $(this).val();
+                if (value != '') {
+                    $('tbody').html('');
+                    $.ajax({
+                    type: 'get',
+                    url: "{{ route('pengumuman.sr') }}",
+                    data: {
+                        'search': value
+                    },
+                    success: function (data) {
+                        $('tbody').html(data);
+                    }
+                });
+                }
+
+            })
+            $('#pkl').on('keyup', function () {
+                 var value = $(this).val();
+                if (value != '') {
+                    $('tbody').html('');
+                    $.ajax({
+                    type: 'get',
+                    url: "{{ route('pkl.sr') }}",
+                    data: {
+                        'search': value
+                    },
+                    success: function (data) {
+                        $('tbody').html(data);
+                    }
+                });
+                }
+
+            })
+            $('#ta').on('keyup', function () {
+                 var value = $(this).val();
+                if (value != '') {
+                    $('tbody').html('');
+                    $.ajax({
+                    type: 'get',
+                    url: "{{ route('ta.sr') }}",
+                    data: {
+                        'search': value
+                    },
+                    success: function (data) {
+                        $('tbody').html(data);
+                    }
+                });
+                }
+
+            })
+             $('#pres').on('keyup', function () {
+                 var value = $(this).val();
+                if (value != '') {
+                    $('tbody').html('');
+                    $.ajax({
+                    type: 'get',
+                    url: "{{ route('pr.sr') }}",
+                    data: {
+                        'search': value
+                    },
+                    success: function (data) {
+                        $('tbody').html(data);
+                    }
+                });
+                }
+
+            })
+            $('#alumni').on('keyup', function () {
+                 var value = $(this).val();
+                if (value != '') {
+                    $('tbody').html('');
+                    $.ajax({
+                    type: 'get',
+                    url: "{{ route('al.sr') }}",
+                    data: {
+                        'search': value
+                    },
+                    success: function (data) {
+                        $('tbody').html(data);
+                    }
+                });
+                }
+
+            })
+        </script>
+
+        <script type="text/javascript">
+
+            $.ajaxSetup({
+                headers: {
+                    'csrftoken': '{{ csrf_token() }}'
+                }
+            });
+        </script>
+
+        {{-- <script>
             $(document).ready(function(){
 
                 // fetch_customer_data();
@@ -768,7 +901,7 @@ headers: {
                 });
             });
 
-        </script>
+        </script> --}}
 
 
         <script>

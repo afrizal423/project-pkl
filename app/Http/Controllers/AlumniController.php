@@ -19,7 +19,35 @@ class AlumniController extends Controller
         $mhs = DB::table('tbl_mahasiswa')->where('status','Alumni')->orderBy('npm', 'asc')->paginate(10);
         return view('admin.alumni.index', ['mhs' => $mhs]);
     }
-
+    public function search(Request $request)
+    {
+    if($request->ajax())
+    {
+        $output="";
+        //$products=DB::table('tbl_mahasiswa')->where('nama','LIKE','%'.$request->search."%")->get();
+        $mhs = DB::table('tbl_mahasiswa')
+                    ->where('status','=','Alumni')
+                    ->orWhere('npm', 'like', '%'.$request->search.'%')
+                    ->orWhere('nama', 'like', '%'.$request->search.'%')
+                    ->orderBy('npm', 'asc')
+                    ->get();
+        if($mhs)
+        {
+             return view('admin.mahasiswa.search', compact('mhs'))->render();
+        // foreach ($mhs as $key => $product) {
+        // $output.='<tr>'.
+        // '<td>'.$product->npm.'</td>'.
+        // '<td>'.$product->nama.'</td>'.
+        // '<td>'.$product->jurusan.'</td>'.
+        // '<td>'.$product->asal.'</td>'.
+        // '</tr>';
+        // }
+        return Response($output);
+        } else {
+            echo "<script>console.log('hahal');</script>";
+        }
+    }
+    }
     /**
      * Show the form for creating a new resource.
      *

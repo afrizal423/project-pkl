@@ -1,67 +1,4 @@
-@extends('admin.master') @section('judul_halaman', 'Pengumuman')
-@section('konten')
-<!-- START CONTENT -->
-<section id="content">
-    <!--breadcrumbs start-->
-    <div id="breadcrumbs-wrapper">
-        <!-- Search for small screen --
-        <div class="header-search-wrapper grey lighten-2 hide-on-large-only">
-            <input
-                type="text"
-                name="Search"
-                class="header-search-input z-depth-2"
-                placeholder="Search">
-        </div>-->
-        <div class="container">
-            <div class="row">
-                <div class="col s10 m6 l6">
-                    <h5 class="breadcrumbs-title">Data Pengumuman</h5>
-                    <ol class="breadcrumbs">
-                        <li>
-                            <a href="{{url('admin')}}">Dashboard</a>
-                        </li>
-                        <li class="active">Pengumuman</li>
-                    </ol>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!--breadcrumbs end-->
-    <!--start container-->
-    <div class="container">
-        <div class="section">
-            <div class="row">
-                <div class="col s12">
-                    <div class="input-field col s12">
-                        <i class="material-icons prefix">search</i>
-                        <input type="text" name="cari" id="cari" placeholder="Cari Data"/>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="container">
-                        <div class="col s12">
-                            <a href="{{route('pengumuman.create')}}" class="blue waves-effect waves-light  btn">
-                                <i class="material-icons left">add</i>
-                                Tambah Pengumuman</a>
-                                <a href="{{url('admin/pengumuman/manage')}}" class="teal waves-effect waves-light  btn">
-                                        <i class="material-icons left">folder</i>
-                                        Kelola Pengumuman</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!--Responsive Table-->
-        <div class="divider"></div>
-        @if(session('status'))
-        <div class="alert alert-success">
-          {{session('status')}}
-        </div>
-      @endif
-        <div class="row" id="hasil">
-            @foreach ($info as $inf)
+@foreach ($info as $inf)
 
 
             <div class="col s12 m4 l4">
@@ -108,14 +45,3 @@
                         </div>
             </div>
             @endforeach
-
-        </div>
-
-        <div class="center-align">
-                @include('pagination.default', ['paginator' => $info])</div>
-    </div>
-
-</div>
-</section>
-<!-- END CONTENT -->
-@endsection

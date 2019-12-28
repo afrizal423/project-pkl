@@ -35,6 +35,39 @@ class PklController extends Controller
         return view('admin.pkl.create');
     }
 
+    public function search(Request $request)
+    {
+    if($request->ajax())
+    {
+        $output="";
+        //$products=DB::table('tbl_mahasiswa')->where('nama','LIKE','%'.$request->search."%")->get();
+        $mhs = DB::table('data_pkl')
+                    ->where('npm', 'like', '%'.$request->search.'%')
+                    ->orWhere('nama', 'like', '%'.$request->search.'%')
+                    ->orWhere('jurusan', 'like', '%'.$request->search.'%')
+                    ->orWhere('judulpkl', 'like', '%'.$request->search.'%')
+                    ->orWhere('namainstansi', 'like', '%'.$request->search.'%')
+                    ->orWhere('alamatinstansi', 'like', '%'.$request->search.'%')
+                    ->orderBy('npm', 'asc')
+                    ->get();
+        if($mhs)
+        {
+             return view('admin.pkl.search', compact('mhs'))->render();
+        // foreach ($mhs as $key => $product) {
+        // $output.='<tr>'.
+        // '<td>'.$product->npm.'</td>'.
+        // '<td>'.$product->nama.'</td>'.
+        // '<td>'.$product->jurusan.'</td>'.
+        // '<td>'.$product->asal.'</td>'.
+        // '</tr>';
+        // }
+        return Response($output);
+        } else {
+            echo "<script>console.log('hahal');</script>";
+        }
+    }
+    }
+
     /**
      * Store a newly created resource in storage.
      *

@@ -26,29 +26,10 @@ class MahasiswaController extends Controller
     public function index()
     {
         //$mhs = Mahasiswa::all();
-        $mhs = DB::table('tbl_mahasiswa')->orderBy('npm', 'asc')->paginate(1);
+        $mhs = DB::table('tbl_mahasiswa')->orderBy('npm', 'asc')->paginate(5);
         return view('admin.mahasiswa.index', ['mhs' => $mhs]);
     }
-    function cari(Request $request)
-    {
-     if($request->ajax())
-     {
-      $sort_by = $request->get('sortby');
-      $sort_type = $request->get('sorttype');
-            $query = $request->get('query');
-            $query = str_replace(" ", "%", $query);
-      $data = DB::table('tbl_mahasiswa')
-                    ->where('npm', 'like', '%'.$query.'%')
-                    ->orWhere('nama', 'like', '%'.$query.'%')
-                    ->orWhere('jurusan', 'like', '%'.$query.'%')
-                    ->orWhere('angkatan', 'like', '%'.$query.'%')
-                    ->orWhere('asal', 'like', '%'.$query.'%')
-                    ->orWhere('status', 'like', '%'.$query.'%')
-                    ->orderBy('npm', 'asc')
-                    ->paginate(1);
-      return view('admin.mahasiswa.search', compact('mhs'))->render();
-     }
-    }
+
 
     function action(Request $request)
     {
@@ -115,6 +96,62 @@ class MahasiswaController extends Controller
     public function lihat()
     {
         return view('admin.mahasiswa.createmhs');
+    }
+    public function cr()
+    {
+        return view('admin.mahasiswa.cr');
+    }
+    function cari(Request $request)
+    {
+     if($request->ajax())
+     {
+      $sort_by = $request->get('sortby');
+      $sort_type = $request->get('sorttype');
+            $query = $request->get('query');
+            $query = str_replace(" ", "%", $query);
+      $data = DB::table('tbl_mahasiswa')
+                    ->where('npm', 'like', '%'.$query.'%')
+                    ->orWhere('nama', 'like', '%'.$query.'%')
+                    ->orWhere('jurusan', 'like', '%'.$query.'%')
+                    ->orWhere('angkatan', 'like', '%'.$query.'%')
+                    ->orWhere('asal', 'like', '%'.$query.'%')
+                    ->orWhere('status', 'like', '%'.$query.'%')
+                    ->orderBy('npm', 'asc')
+                    ->paginate(1);
+      return view('admin.mahasiswa.search', compact('mhs'))->render();
+     }
+    }
+    public function search(Request $request)
+    {
+    if($request->ajax())
+    {
+        $output="";
+        //$products=DB::table('tbl_mahasiswa')->where('nama','LIKE','%'.$request->search."%")->get();
+        $mhs = DB::table('tbl_mahasiswa')
+                    ->where('npm', 'like', '%'.$request->search.'%')
+                    ->orWhere('nama', 'like', '%'.$request->search.'%')
+                    ->orWhere('jurusan', 'like', '%'.$request->search.'%')
+                    ->orWhere('angkatan', 'like', '%'.$request->search.'%')
+                    ->orWhere('asal', 'like', '%'.$request->search.'%')
+                    ->orWhere('status', 'like', '%'.$request->search.'%')
+                    ->orderBy('npm', 'asc')
+                    ->get();
+        if($mhs)
+        {
+             return view('admin.mahasiswa.search', compact('mhs'))->render();
+        // foreach ($mhs as $key => $product) {
+        // $output.='<tr>'.
+        // '<td>'.$product->npm.'</td>'.
+        // '<td>'.$product->nama.'</td>'.
+        // '<td>'.$product->jurusan.'</td>'.
+        // '<td>'.$product->asal.'</td>'.
+        // '</tr>';
+        // }
+        return Response($output);
+        } else {
+            echo "<script>console.log('hahal');</script>";
+        }
+    }
     }
     /**
      * Store a newly created resource in storage.
