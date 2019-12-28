@@ -16,6 +16,11 @@ class MahasiswaController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('revalidate');
+    }
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 
     /**
@@ -26,7 +31,7 @@ class MahasiswaController extends Controller
     public function index()
     {
         //$mhs = Mahasiswa::all();
-        $mhs = DB::table('tbl_mahasiswa')->orderBy('npm', 'asc')->paginate(5);
+        $mhs = DB::table('tbl_mahasiswa')->orderBy('npm', 'asc')->paginate(10);
         return view('admin.mahasiswa.index', ['mhs' => $mhs]);
     }
 

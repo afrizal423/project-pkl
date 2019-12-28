@@ -15,6 +15,11 @@ class BeritaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('revalidate');
+    }
     public function index()
     {
         $info = DB::table('tbl_pengumuman')->join('users', 'tbl_pengumuman.username', '=', 'users.username')->where('tbl_pengumuman.kategori','Berita' )->where('tbl_pengumuman.username', \Auth::user()->username)->orderBy('tbl_pengumuman.id', 'asc')->paginate(10);

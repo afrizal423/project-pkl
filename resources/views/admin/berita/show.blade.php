@@ -38,7 +38,7 @@
             <div class="card">
                 <h4>{{$inf->judul}}</h4>
                 <div >
-                        <img style="width:max-content;height:250px"class="responsive-img" src="{{url('storage',$inf->gambar)}}">
+                        <img style="width:max-content;height:250px"class="responsive-img" src="{{asset('storage/' . $inf->gambar)}}">
                         <div  style="font-size:9pt;" class="">By {{$inf->nama}} • {{ \Carbon\Carbon::parse($inf->created_at)->format('j F, Y h:i:s A')}}</div>
                 </div><hr style="margin:20px">
                 <div>

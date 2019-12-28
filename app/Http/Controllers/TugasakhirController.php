@@ -15,6 +15,11 @@ class TugasakhirController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('revalidate');
+    }
     public function index()
     {
         $mhs = DB::table('data_tugasakhir')->orderBy('id', 'asc')->paginate(10);
