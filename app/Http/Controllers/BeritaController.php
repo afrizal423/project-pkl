@@ -28,9 +28,9 @@ class BeritaController extends Controller
     public function manage()
     {
         //
-        $info = DB::table('tbl_pengumuman')->join('users', 'tbl_pengumuman.username', '=', 'users.username')->where('tbl_pengumuman.kategori','Berita' )->where('tbl_pengumuman.username', \Auth::user()->username)->orderBy('tbl_pengumuman.id', 'asc')->paginate(10);
+        $info = DB::table('tbl_pengumuman')->join('users', 'tbl_pengumuman.username', '=', 'users.username')->where('tbl_pengumuman.kategori','Berita' )->where('tbl_pengumuman.username', \Auth::user()->username)->orderBy('tbl_pengumuman.id', 'asc')->select('tbl_pengumuman.*')->paginate(10);
         return view('admin.berita.manage', ['info' => $info]);
-        //echo $info;
+        //echo json_encode($info);
     }
     /**
      * Show the form for creating a new resource.

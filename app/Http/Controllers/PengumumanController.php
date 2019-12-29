@@ -31,7 +31,7 @@ class PengumumanController extends Controller
     public function manage()
     {
         //
-        $info = DB::table('tbl_pengumuman')->join('users', 'tbl_pengumuman.username', '=', 'users.username')->where('tbl_pengumuman.username', \Auth::user()->username)->where('tbl_pengumuman.kategori','!=','Berita' )->orderBy('tbl_pengumuman.id', 'asc')->paginate(10);
+        $info = DB::table('tbl_pengumuman')->join('users', 'tbl_pengumuman.username', '=', 'users.username')->where('tbl_pengumuman.username', \Auth::user()->username)->where('tbl_pengumuman.kategori','!=','Berita' )->orderBy('tbl_pengumuman.id', 'asc')->select('tbl_pengumuman.*')->paginate(10);
         return view('admin.pengumuman.manage', ['info' => $info]);
         //echo $info;
     }

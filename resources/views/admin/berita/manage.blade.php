@@ -1,4 +1,4 @@
-@extends('admin.master') @section('judul_halaman', 'Pengumuman')
+@extends('admin.master') @section('judul_halaman', 'Berita')
 @section('konten')
 <!-- START CONTENT -->
 <section id="content">
@@ -46,7 +46,7 @@
                         <div class="col s12">
 
                             <a
-                                href="{{route('pengumuman.create')}}"
+                                href="{{route('berita.create')}}"
                                 class="blue waves-effect waves-light  btn">
                                 <i class="material-icons left">add</i>
                                 Tambah Data</a>
@@ -77,7 +77,7 @@
 
                             <tr>
                                 <td><a
-                                    href="{{ route('pengumuman.show', $inf->slug)}}">
+                                    href="{{ route('berita.show', $inf->slug)}}">
                                     {{ $inf->judul }}</a> </td>
                                 <td>{{ $inf->kategori }}</td>
                                 <td>{{ $inf->status }}</td>

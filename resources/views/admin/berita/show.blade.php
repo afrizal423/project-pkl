@@ -1,4 +1,4 @@
-@extends('admin.master') @section('judul_halaman', 'Pengumuman')
+@extends('admin.master') @section('judul_halaman', 'Berita')
 @section('konten')
 <!-- START CONTENT -->
 <section id="content">
