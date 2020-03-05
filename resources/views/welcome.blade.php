@@ -83,13 +83,15 @@
                 <div class="title m-b-md">
                     AfrizaL
                 </div>
-                <span>Ini adalah mirror project Praktek Kerja Lapangan(PKL) dari GitHub saya<br>Jadi jika error di web ini maafkan ini adalah project Local :v</span><br><br>
+                <span>Ini adalah mirror project Praktek Kerja Lapangan(PKL) dari <a href="https://github.com/afrizal423/project-pkl/tree/develop">GitHub</a> saya.<br>
+                <b>Bug Bounty</b> dipersilahkan untuk mencari kelemahan website ini. <br>
+                Silahkan login pada menu atas.</span><br><br>
                 <div class="links">
-                    <a href="https://laravel.com/docs">Instagram</a>
-                    <a href="https://laracasts.com">Facebook</a>
-                    <a href="https://laravel-news.com">Whatsapp</a>
-                    <a href="https://blog.laravel.com">Twitter</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="https://instagram.com/afrizal.my">Instagram</a>
+                    <a href="https://www.facebook.com/rizal.htmI">Facebook</a>
+                    <a href="https://twitter.com/afrizalpatlas">Twitter</a>
+                    <a href="https://github.com/afrizal423/">GitHub</a>
+                    <a href="https://www.linkedin.com/in/afrizal-muhammad-yasin-175919166/">LinkedIn</a>
                 </div>
             </div>
         </div>
